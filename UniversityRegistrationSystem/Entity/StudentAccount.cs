@@ -8,5 +8,19 @@ namespace UniversityRegistrationSystem.Entity
 {
     class StudentAccount : Account
     {
+        private Class[] classes;
+
+        public Class[] Classes
+        {
+            get
+            {
+                return classes;
+            }
+
+            set
+            {
+                classes = value;
+            }
+        }
     }
 }

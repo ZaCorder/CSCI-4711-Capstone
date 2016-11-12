@@ -76,6 +76,7 @@
       <DependentUpon>PopUpWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Control\DBConnect.cs" />
+    <Compile Include="Control\DBConnectorInit.cs" />
     <Compile Include="Entity\Account.cs" />
     <Compile Include="Entity\AdministratorAccount.cs" />
     <Compile Include="Entity\Class.cs" />
