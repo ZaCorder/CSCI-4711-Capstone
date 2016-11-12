@@ -13,6 +13,7 @@ namespace UniversityRegistrationSystem.Control
     /// Database initialization class. This will create the tables and insert
     /// testing data.
     /// </summary>
+
     class DBConnectorInit
     {
         private DBConnect dbConnector;
