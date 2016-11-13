@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boundry\PopUpWindow.cs" />
     <Compile Include="Entity\Account.cs" />
     <Compile Include="Entity\AdministratorAccount.cs" />
     <Compile Include="Entity\Class.cs" />
