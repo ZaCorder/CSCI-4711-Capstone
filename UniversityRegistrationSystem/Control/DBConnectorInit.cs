@@ -7,26 +7,41 @@ using System.Data.SQLite;
 using System.Data.Common;
 using UniversityRegistrationSystem.Entity;
 
-
 namespace UniversityRegistrationSystem.Control
 {
+    /// <summary>
+    /// Database initialization class. This will create the tables and insert
+    /// testing data.
+    /// </summary>
     class DBConnectorInit
     {
         private DBConnect dbConnector;
 
+        /// <summary>
+        /// Constructor for the Database initialization class.
+        /// </summary>
+        /// <param name="dbConnector">An instance of the dbConnector.</param>
         public DBConnectorInit(DBConnect dbConnector)
         {
             this.dbConnector = dbConnector;
             this.CreateTables();
+
             if (this.ShouldCreateTestContent())
                 this.CreateTestContent();
         }
 
+        /// <summary>
+        /// Determine if the specified table exists.
+        /// </summary>
+        /// <param name="tableName">The table name for which to check existance.</param>
         public bool TableExists(string tableName)
         {
             return this.dbConnector.GetConnection().GetSchema("Tables").Select("Table_Name = '" + tableName + "'").Length > 0;
         }
 
+        /// <summary>
+        /// Create all necessary tables.
+        /// </summary>
         private void CreateTables()
         {
             this.dbConnector.GetConnection().Open();
@@ -36,6 +51,9 @@ namespace UniversityRegistrationSystem.Control
             this.dbConnector.GetConnection().Close();
         }
 
+        /// <summary>
+        /// Create the "Account" entity table.
+        /// </summary>
         private void CreateTableAccount()
         {
             if (!TableExists("Account"))
@@ -50,6 +68,9 @@ namespace UniversityRegistrationSystem.Control
             }
         }
 
+        /// <summary>
+        /// Create the "Class" entity table.
+        /// </summary>
         private void CreateTableClass()
         {
             if (!TableExists("Class"))
@@ -72,6 +93,9 @@ namespace UniversityRegistrationSystem.Control
             }
         }
 
+        /// <summary>
+        /// Create the "AccountClass" entity table.
+        /// </summary>
         private void CreateTableAccountClass()
         {
             if (!TableExists("AccountClass"))
@@ -87,12 +111,18 @@ namespace UniversityRegistrationSystem.Control
             }
         }
 
+        /// <summary>
+        /// Create test content.
+        /// </summary>
         private void CreateTestContent()
         {
             this.CreateTestClasses();
             this.CreateTestContentAccounts();
         }
 
+        /// <summary>
+        /// Determine if test content should be created.
+        /// </summary>
         private bool ShouldCreateTestContent()
         {
             this.dbConnector.GetConnection().Open();
@@ -103,6 +133,9 @@ namespace UniversityRegistrationSystem.Control
             return !has_content;
         }
 
+        /// <summary>
+        /// Create test Accounts.
+        /// </summary>
         private void CreateTestContentAccounts()
         {
             AdministratorAccount administrator = new AdministratorAccount();
@@ -119,6 +152,9 @@ namespace UniversityRegistrationSystem.Control
             dbConnector.SaveAccount(student);
         }
 
+        /// <summary>
+        /// Create test Classes.
+        /// </summary>
         private void CreateTestClasses()
         {
             Class classA = new Class();
