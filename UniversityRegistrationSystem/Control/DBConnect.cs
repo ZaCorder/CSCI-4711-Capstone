@@ -77,8 +77,7 @@ namespace UniversityRegistrationSystem.Control
             for (int i = 0; i < student.Classes.Length; i++) {
                 if (student.Classes[i] != null)
                  this.SaveAccountClass(student, student.Classes[i]);
-            }
-                
+            }      
         }
 
         /// <summary>
@@ -141,9 +140,7 @@ namespace UniversityRegistrationSystem.Control
             {
                 classes = new Class[reader.FieldCount];
                 while (reader.Read())
-                {
                     classes[reader.StepCount - 1] = new Class(reader);
-                }
             }
             reader.Close();
             this.dbConnection.Close();
