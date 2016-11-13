@@ -273,11 +273,11 @@ namespace UniversityRegistrationSystem.Control
         }
 
         /// <summary>
-        /// 
+        /// Retreive a "Class" entity given the course number and section.
         /// </summary>
-        /// <param name="courseNo"></param>
-        /// <param name="section"></param>
-        /// <returns></returns>
+        /// <param name="courseNo">The course number of the class to retrieve.</param>
+        /// <param name="section">The section of the class to retrieve.</param>
+        /// <returns>The "Class" entity for the specified course number and section.</returns>
         public Class GetClass(string courseNo, string section)
         {
             this.dbConnection.Open();
