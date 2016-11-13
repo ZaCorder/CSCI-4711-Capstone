@@ -41,9 +41,10 @@ namespace UniversityRegistrationSystem.Control
             if (!TableExists("Account"))
             {
                 string query = @"CREATE TABLE Account (
-                email VARCHAR(255) PRIMARY KEY,
+                email VARCHAR(255) NOT NULL,
                 password VARCHAR(128),
-                type VARCHAR(30))";
+                type VARCHAR(30),
+                PRIMARY KEY (email))";
                 SQLiteCommand command = new SQLiteCommand(query, this.dbConnector.GetConnection());
                 command.ExecuteNonQuery();
             }
@@ -54,7 +55,7 @@ namespace UniversityRegistrationSystem.Control
             if (!TableExists("Class"))
             {
                 string query = @"CREATE TABLE Class (
-                courseNo VARCHAR(64) PRIMARY KEY,
+                courseNo VARCHAR(64) NOT NULL,
                 section VARCHAR(30),
                 className VARCHAR(255),
                 credits integer,
@@ -64,7 +65,8 @@ namespace UniversityRegistrationSystem.Control
                 timeEnd DATETIME,
                 startDate DATETIME,
                 endDate DATETIME,
-                classDays VARCHAR(7))";
+                classDays VARCHAR(7),
+                PRIMARY KEY (courseNo, section))";
                 SQLiteCommand command = new SQLiteCommand(query, this.dbConnector.GetConnection());
                 command.ExecuteNonQuery();
             }
@@ -78,7 +80,8 @@ namespace UniversityRegistrationSystem.Control
                     email VARCHAR(255),
                     courseNo VARCHAR(64),
                     FOREIGN KEY(courseNo) REFERENCES Class(courseNo),
-                    FOREIGN KEY(email) REFERENCES Account(email))";
+                    FOREIGN KEY(email) REFERENCES Account(email),
+                    PRIMARY KEY (email, courseNo))";
                 SQLiteCommand command = new SQLiteCommand(query, this.dbConnector.GetConnection());
                 command.ExecuteNonQuery();
             }
