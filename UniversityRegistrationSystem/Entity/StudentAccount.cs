@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Common;
 
 namespace UniversityRegistrationSystem.Entity
 {
     class StudentAccount : Account
     {
-        private Class[] classes;
+        private List<Class> classes;
 
-        public Class[] Classes
+        public List<Class> Classes
         {
             get
             {
@@ -21,6 +22,14 @@ namespace UniversityRegistrationSystem.Entity
             {
                 classes = value;
             }
+        }
+
+        public StudentAccount() : base()
+        {
+        }
+
+        public StudentAccount(DbDataReader reader) : base(reader)
+        {
         }
     }
 }
