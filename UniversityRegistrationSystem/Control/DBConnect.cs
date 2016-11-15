@@ -49,6 +49,12 @@ namespace UniversityRegistrationSystem.Control
             return this.dbConnection;
         }
 
+        /// <summary>
+        /// Retrieve an "Account" entity for a specified email and password combination.
+        /// </summary>
+        /// <param name="email">The email address associated with the account.</param>
+        /// <param name="password">The hashed password associated with the account.</param>
+        /// <returns>The "Account" entity that was requested.</returns>
         public Account GetAccount(string email, string password)
         {
             this.dbConnection.Open();
@@ -275,18 +281,22 @@ namespace UniversityRegistrationSystem.Control
         /// <summary>
         /// Retreive a "Class" entity given the course number and section.
         /// </summary>
-        /// <param name="courseNo">The course number of the class to retrieve.</param>
+        /// <param name="fullCourseId">The full course id for a class. Example: courseNo-section.</param>
         /// <param name="section">The section of the class to retrieve.</param>
         /// <returns>The "Class" entity for the specified course number and section.</returns>
-        public Class GetClass(string courseNo, string section)
+        public Class GetClass(string fullCourseId)
         {
             this.dbConnection.Open();
+            String[] parsedCourseId = fullCourseId.Split('-');
+            if (parsedCourseId.Length != 2)
+                throw new Exception("Invalid full course id. Ex: courseNo-section");
+
             Class classRecord = new Class();
             string query = @"SELECT * FROM Class WHERE
                 courseNo = @courseNo AND section = @section";
             SQLiteCommand command = new SQLiteCommand(query, this.dbConnection);
-            command.Parameters.AddWithValue("@courseNo", courseNo);
-            command.Parameters.AddWithValue("@section", section);
+            command.Parameters.AddWithValue("@courseNo", parsedCourseId[0]);
+            command.Parameters.AddWithValue("@section", parsedCourseId[1]);
             SQLiteDataReader reader = command.ExecuteReader();
             if (reader.HasRows)
             {
@@ -306,11 +316,7 @@ namespace UniversityRegistrationSystem.Control
         /// <returns></returns>
         public StudentAccount Register(string fullCourseId, StudentAccount student)
         {
-            String[] parsedCourseId = fullCourseId.Split('-');
-            if (parsedCourseId.Length != 2)
-                throw new Exception("Invalid full course id. Ex: courseNo-section");
-
-            Class classRecord = GetClass(parsedCourseId[0], parsedCourseId[1]);
+            Class classRecord = GetClass(fullCourseId);
             if (classRecord != null)
                 student.Classes.Add(classRecord);
 
