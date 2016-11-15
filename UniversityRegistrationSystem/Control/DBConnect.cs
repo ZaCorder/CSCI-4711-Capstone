@@ -286,11 +286,11 @@ namespace UniversityRegistrationSystem.Control
         /// <returns>The "Class" entity for the specified course number and section.</returns>
         public Class GetClass(string fullCourseId)
         {
-            this.dbConnection.Open();
             String[] parsedCourseId = fullCourseId.Split('-');
             if (parsedCourseId.Length != 2)
                 throw new Exception("Invalid full course id. Ex: courseNo-section");
 
+            this.dbConnection.Open();
             Class classRecord = new Class();
             string query = @"SELECT * FROM Class WHERE
                 courseNo = @courseNo AND section = @section";
