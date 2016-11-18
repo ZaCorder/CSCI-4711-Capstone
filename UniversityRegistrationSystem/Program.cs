@@ -24,7 +24,7 @@ namespace UniversityRegistrationSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            accountControl.LogIn("asdf", "asdf");
+            accountControl.Login("administrator@example.com", "donotenter");
 
             Application.Run();
         }
