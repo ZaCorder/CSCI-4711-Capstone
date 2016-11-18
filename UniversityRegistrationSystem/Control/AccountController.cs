@@ -12,9 +12,11 @@ namespace UniversityRegistrationSystem.Control
     class AccountController : Controller
     {
         private Account account;
+        private DBConnect db;
 
         public AccountController(DBConnect db) : base(db)
         {
+            this.db = db;
         }
 
         public Account GetLoggedInUser()
@@ -22,12 +24,15 @@ namespace UniversityRegistrationSystem.Control
             return this.account;
         }
 
-        public void LogIn(string username, string password)
+        public void Login(string username, string password)
         {
-            this.account = new Account();
-            ActivityWindow ActivityWindow = new ActivityWindow(this);
-            ActivityWindow.Text = "Main Activity Window";
-            ActivityWindow.Show();
+            this.account = db.GetAccount(username, password);
+
+            if (account.Type == "Administrator") {
+                ActivityWindow ActivityWindow = new ActivityWindow(this);
+                ActivityWindow.Text = "Main Activity Window";
+                ActivityWindow.Show();
+            }
         }
 
         public void Logout()
