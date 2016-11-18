@@ -69,8 +69,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control\AccountController.cs" />
+    <Compile Include="Control\Controller.cs" />
     <Compile Include="Control\DBConnect.cs" />
     <Compile Include="Control\DBConnectorInit.cs" />
+    <Compile Include="Boundry\ActivityWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Boundry\ActivityWindow.Designer.cs">
+      <DependentUpon>ActivityWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Boundry\LogoutButton.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Boundry\LogoutButton.Designer.cs">
+      <DependentUpon>LogoutButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entity\Account.cs" />
     <Compile Include="Entity\AdministratorAccount.cs" />
     <Compile Include="Entity\Class.cs" />
@@ -83,6 +97,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Boundry\ActivityWindow.resx">
+      <DependentUpon>ActivityWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Boundry\LogoutButton.resx">
+      <DependentUpon>LogoutButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
