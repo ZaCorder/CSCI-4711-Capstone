@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UniversityRegistrationSystem.Control;
 using UniversityRegistrationSystem.Entity;
+using UniversityRegistrationSystem.Boundry;
 
 namespace UniversityRegistrationSystem
 {
@@ -18,9 +19,14 @@ namespace UniversityRegistrationSystem
         {
             DBConnect db = DBConnect.Instance;
             new DBConnectorInit(db);
+            AccountController accountControl = new AccountController(db);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            accountControl.LogIn("asdf", "asdf");
+
+            Application.Run();
         }
     }
 }
