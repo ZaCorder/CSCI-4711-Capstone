@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UniversityRegistrationSystem
 {
-    public partial class Form1 : Form
+    public partial class LoginForm : Form
     {
-        public Form1()
+        public LoginForm()
         {
             InitializeComponent();
         }
@@ -27,9 +27,18 @@ namespace UniversityRegistrationSystem
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Loginbtn_Click(object sender, EventArgs e)
         {
+            string username = Emailtbx.Text;
+            string password = passwordtbx.Text;
+            if(String.IsNullOrWhiteSpace(username) || String.IsNullOrWhiteSpace(password))
+            {
+                ErrorLbl.Text = "You must enter a valid username and password";
+                ErrorLbl.Visible = true;
+            }
 
         }
+
+      
     }
 }
