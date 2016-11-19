@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Common;
 
 namespace UniversityRegistrationSystem.Entity
 {
@@ -161,6 +162,24 @@ namespace UniversityRegistrationSystem.Entity
             {
                 classDays = value;
             }
+        }
+
+        public Class()
+        { }
+
+        public Class(DbDataReader reader)
+        {
+            this.CourseNo = reader.GetString(0);
+            this.Section = reader.GetString(1);
+            this.ClassName = reader.GetString(2);
+            this.Credits = reader.GetInt32(3);
+            this.Location = reader.GetString(4);
+            this.Instructor = reader.GetString(5);
+            this.TimeStart = reader.GetDateTime(6);
+            this.TimeEnd = reader.GetDateTime(7);
+            this.StartDate = reader.GetDateTime(8);
+            this.EndDate = reader.GetDateTime(9);
+            this.ClassDays = reader.GetString(10);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Common;
 
 namespace UniversityRegistrationSystem.Entity
 {
@@ -49,6 +50,17 @@ namespace UniversityRegistrationSystem.Entity
             {
                 type = value;
             }
+        }
+
+        public Account()
+        {
+        }
+
+        public Account(DbDataReader reader)
+        {
+            this.Email = reader.GetString(0);
+            this.Password = reader.GetString(1);
+            this.Type = reader.GetString(2);
         }
     }
 }
