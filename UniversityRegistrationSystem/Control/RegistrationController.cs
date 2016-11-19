@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UniversityRegistrationSystem.Entity;
 
 namespace UniversityRegistrationSystem.Control
 {
     class RegistrationController : Controller
     {
         private DBConnect db;
+        private AccountController accountController;
 
-        public RegistrationController(DBConnect db) : base(db)
+        public RegistrationController(DBConnect db, AccountController accountController) : base(db)
         {
             this.db = db;
+            this.accountController = accountController;
         }
 
-        public Student Register(string fullCourseId)
+        public StudentAccount Register(string fullCourseId)
         {
-
-            Account user = GetLoggedInUser();
-            return this.Register(fullCourseId, user);
+            return this.db.Register(fullCourseId, (StudentAccount) this.accountController.GetLoggedInUser());
         }
     }
 }

@@ -15,13 +15,13 @@ namespace UniversityRegistrationSystem.Control
             this.db = db;
         }
 
-        public void Submit(string section, string className,
+        public void Submit(string courseNo, string section, string className,
             int credits, string location, string instructor, DateTime timeStart,
             DateTime timeEnd, DateTime startDate, DateTime endDate, string classDays)
         {
-            return this.CreateClass(courseNo, section, className,
-            credits, location, instructor, timeStart,
-            timeEnd, startDate, endDate, classDays);
+            this.db.CreateClass(courseNo, section, className,
+                credits, location, instructor, timeStart,
+                timeEnd, startDate, endDate, classDays);
         }
     }
 }

@@ -20,12 +20,13 @@ namespace UniversityRegistrationSystem
             DBConnect db = DBConnect.Instance;
             new DBConnectorInit(db);
             AccountController accountControl = new AccountController(db);
+            RegistrationController registrationControl = new RegistrationController(db, accountControl);
+            
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            accountControl.Login("administrator@example.com", "donotenter");
-
+            accountControl.Login("student@example.com", "donotenter");
+            registrationControl.Register("CSCI 1101-B");
             Application.Run();
         }
     }
