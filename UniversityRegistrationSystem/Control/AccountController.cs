@@ -39,7 +39,7 @@ namespace UniversityRegistrationSystem.Control
         public void Login(string username, string password)
         {
             this.account = db.GetAccount(username, password);
-            this.ShowActivityWorspace(account.Type);
+            this.ShowActivityWorkspace(account.Type);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace UniversityRegistrationSystem.Control
         /// Display the Activity workspace form.
         /// </summary>
         /// <param name="type"></param>
-        public void ShowActivityWorspace(string type)
+        public void ShowActivityWorkspace(string type)
         {
             ActivityWindow ActivityWindow = new ActivityWindow(this);
             ActivityWindow.Text = "Main Activity Window";
