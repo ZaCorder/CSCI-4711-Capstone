@@ -8,5 +8,8 @@ namespace UniversityRegistrationSystem.Entity
 {
     class StudentAccount : Account
     {
+        public List<Class> classes { get; set; } = new List<Class>(); 
+
+        public Account account { get; set; }
     }
 }

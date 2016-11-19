@@ -8,5 +8,6 @@ namespace UniversityRegistrationSystem.Entity
 {
     class AdministratorAccount : Account
     {
+        public Account account { get; set; }
     }
 }
