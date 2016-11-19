@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Control\AccountController.cs" />
+    <Compile Include="Control\ClassController.cs" />
     <Compile Include="Control\Controller.cs" />
     <Compile Include="Control\DBConnect.cs" />
     <Compile Include="Control\DBConnectorInit.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Boundry\LogoutButton.Designer.cs">
       <DependentUpon>LogoutButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\RegistrationController.cs" />
     <Compile Include="Entity\Account.cs" />
     <Compile Include="Entity\AdministratorAccount.cs" />
     <Compile Include="Entity\Class.cs" />
