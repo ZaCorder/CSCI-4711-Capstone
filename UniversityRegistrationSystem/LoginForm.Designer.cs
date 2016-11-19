@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.Emailtbx = new System.Windows.Forms.TextBox();
-            this.passwordtbx = new System.Windows.Forms.TextBox();
+            this.Passwordtbx = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,13 +46,13 @@
             this.Emailtbx.TabIndex = 0;
             this.Emailtbx.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // passwordtbx
+            // Passwordtbx
             // 
-            this.passwordtbx.Location = new System.Drawing.Point(114, 173);
-            this.passwordtbx.Name = "passwordtbx";
-            this.passwordtbx.PasswordChar = '*';
-            this.passwordtbx.Size = new System.Drawing.Size(273, 22);
-            this.passwordtbx.TabIndex = 1;
+            this.Passwordtbx.Location = new System.Drawing.Point(114, 173);
+            this.Passwordtbx.Name = "Passwordtbx";
+            this.Passwordtbx.PasswordChar = '*';
+            this.Passwordtbx.Size = new System.Drawing.Size(273, 22);
+            this.Passwordtbx.TabIndex = 1;
             // 
             // label1
             // 
@@ -121,7 +121,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.passwordtbx);
+            this.Controls.Add(this.Passwordtbx);
             this.Controls.Add(this.Emailtbx);
             this.Name = "LoginForm";
             this.Text = "Login";
@@ -134,13 +134,38 @@
         #endregion
 
         private System.Windows.Forms.TextBox Emailtbx;
-        private System.Windows.Forms.TextBox passwordtbx;
+        private System.Windows.Forms.TextBox Passwordtbx;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button Loginbtn;
         private System.Windows.Forms.Label ErrorLbl;
+
+        public System.Windows.Forms.Label _ErrorLbl
+        {
+            get
+            {
+                return ErrorLbl;
+            }
+            set
+            {
+                ErrorLbl = value;
+            }
+        }
+
+        public System.Windows.Forms.TextBox _Emailtbx
+        {
+            get
+            {
+                return Emailtbx;
+            }
+            set
+            {
+                Emailtbx = value;
+            }
+        }
+
     }
 }
 

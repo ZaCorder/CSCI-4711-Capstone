@@ -13,7 +13,7 @@ namespace UniversityRegistrationSystem.Control
     /// <summary>
     /// Database connector class. Used to communication with the databse.
     /// </summary>
-    class DBConnect
+    public class DBConnect
     {
         private SQLiteConnection dbConnection;
         private static DBConnect instance;

@@ -12,7 +12,7 @@ namespace UniversityRegistrationSystem.Control
     /// <summary>
     /// Account controller class definition.
     /// </summary>
-    class AccountController : Controller
+    public class AccountController : Controller
     {
         private Account account;
         private DBConnect db;
@@ -36,10 +36,22 @@ namespace UniversityRegistrationSystem.Control
         /// </summary>
         /// <param name="username">The username of the user to be logged in.</param>
         /// <param name="password">The password of the user to be logged in.</param>
-        public void Login(string username, string password)
+        public bool Login(string username, string password)
         {
-            this.account = db.GetAccount(username, password);
-            this.ShowActivityWorkspace(account.Type);
+            string hashedPassword = password.GetHashCode().ToString();
+            this.account = db.GetAccount(username, hashedPassword);
+            if (account.Type == null)
+            {
+                //invalid login - display error message
+                DisplayLoginForm(true, username);
+                return false;
+
+            }
+            else
+            {
+                this.ShowActivityWorkspace(account.Type);
+                return true;
+            }
         }
 
         /// <summary>
@@ -54,10 +66,17 @@ namespace UniversityRegistrationSystem.Control
         /// <summary>
         /// Display the Login form.
         /// </summary>
-        public void DisplayLoginForm()
+        public void DisplayLoginForm(bool displayError = false, string username = "" )
         {
-            ActivityWindow loginForm = new ActivityWindow(this);
-            loginForm.Text = "Login";
+            LoginForm loginForm = new LoginForm(this);
+            if (displayError)
+            {
+                loginForm.InvalidLogin(username);
+            }
+            else
+            {
+                loginForm._ErrorLbl.Visible = false;
+            }
             loginForm.Show();
         }
 
