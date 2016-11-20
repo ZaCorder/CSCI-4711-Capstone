@@ -172,6 +172,7 @@ namespace UniversityRegistrationSystem.Control
             DateTime endTime3 = new DateTime(2016, 1, 1, 15, 45, 0);
             dbConnector.CreateClass("MATH 2011", "D", "Calculus", 4,
                 "AH 200", "Pennyworth", startTime3, endTime3, DateTime.Now, DateTime.Now.AddDays(84), "TR");
+
         }
     }
 }
