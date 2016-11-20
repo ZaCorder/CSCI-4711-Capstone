@@ -12,10 +12,24 @@ namespace UniversityRegistrationSystem.Control
     /// <summary>
     /// Account controller class definition.
     /// </summary>
-    class AccountController : Controller
+    public class AccountController : Controller
     {
         private Account account;
         private DBConnect db;
+        private LoginForm loginForm;
+
+        public LoginForm LoginForm
+        {
+            get
+            {
+                return loginForm;
+            }
+
+            set
+            {
+                loginForm = value;
+            }
+        }
 
         public AccountController(DBConnect db) : base(db)
         {
@@ -36,10 +50,17 @@ namespace UniversityRegistrationSystem.Control
         /// </summary>
         /// <param name="username">The username of the user to be logged in.</param>
         /// <param name="password">The password of the user to be logged in.</param>
-        public void Login(string username, string password)
+        public bool Login(string username, string password)
         {
-            this.account = db.GetAccount(username, password);
-            this.ShowActivityWorkspace(account.Type);
+            string hashedPassword = password.GetHashCode().ToString();
+            this.account = db.GetAccount(username, hashedPassword);
+            if (account.Type == null)
+                return false;
+            else
+            {
+                this.ShowActivityWorkspace(account.Type);
+                return true;
+            }
         }
 
         /// <summary>
@@ -54,11 +75,13 @@ namespace UniversityRegistrationSystem.Control
         /// <summary>
         /// Display the Login form.
         /// </summary>
-        public void DisplayLoginForm()
+        public void DisplayLoginForm(bool displayError = false, string username = "" )
         {
-            ActivityWindow loginForm = new ActivityWindow(this);
-            loginForm.Text = "Login";
-            loginForm.Show();
+            if (displayError)
+                this.LoginForm.InvalidLogin(username);
+            else
+                LoginForm._ErrorLbl.Visible = false;
+            this.LoginForm.Reset().Show();
         }
 
         /// <summary>
@@ -67,9 +90,11 @@ namespace UniversityRegistrationSystem.Control
         /// <param name="type"></param>
         public void ShowActivityWorkspace(string type)
         {
-            ActivityWindow ActivityWindow = new ActivityWindow(this);
-            ActivityWindow.Text = "Main Activity Window";
-            ActivityWindow.Show();
+            ClassList classList = new ClassList(db.GetClasses());
+            CreateClass activityWindow = new CreateClass(this, new ClassController(this.db), classList);
+
+            activityWindow.Text = "Create class Activity Window";
+            activityWindow.Show();
         }
     }
 }

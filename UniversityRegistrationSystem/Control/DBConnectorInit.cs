@@ -141,13 +141,13 @@ namespace UniversityRegistrationSystem.Control
         {
             AdministratorAccount administrator = new AdministratorAccount();
             administrator.Email = "administrator@example.com";
-            administrator.Password = "donotenter";
+            administrator.Password = "donotenter".GetHashCode().ToString();
             administrator.Type = "Administrator";
             dbConnector.SaveAccount(administrator);
 
             StudentAccount student = new StudentAccount();
             student.Email = "student@example.com";
-            student.Password = "donotenter";
+            student.Password = "donotenter".GetHashCode().ToString();
             student.Type = "Student";
             student.Classes = dbConnector.GetClasses();
             dbConnector.SaveAccount(student);
@@ -166,12 +166,12 @@ namespace UniversityRegistrationSystem.Control
             DateTime startTime2 = new DateTime(2016, 1, 1, 11, 0, 0);
             DateTime endTime2 = new DateTime(2016, 1, 1, 12, 45, 0);
             dbConnector.CreateClass("CSCI 1101", "B", "Math Structures", 3,
-                "AH 300", "Grayson", startTime, endTime, DateTime.Now, DateTime.Now.AddDays(84), "TR");
+                "AH 300", "Grayson", startTime2, endTime2, DateTime.Now, DateTime.Now.AddDays(84), "TR");
 
-            DateTime startTime3 = new DateTime(2016, 1, 1, 2, 0, 0);
-            DateTime endTime3 = new DateTime(2016, 1, 1, 3, 45, 0);
+            DateTime startTime3 = new DateTime(2016, 1, 1, 14, 0, 0);
+            DateTime endTime3 = new DateTime(2016, 1, 1, 15, 45, 0);
             dbConnector.CreateClass("MATH 2011", "D", "Calculus", 4,
-                "AH 200", "Pennyworth", startTime, endTime, DateTime.Now, DateTime.Now.AddDays(84), "TR");
+                "AH 200", "Pennyworth", startTime3, endTime3, DateTime.Now, DateTime.Now.AddDays(84), "TR");
         }
     }
 }

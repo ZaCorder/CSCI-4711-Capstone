@@ -7,7 +7,7 @@ using System.Data.Common;
 
 namespace UniversityRegistrationSystem.Entity
 {
-    class Class
+    public class Class
     {
         private string courseNo;
         private string section;
