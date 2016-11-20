@@ -10,21 +10,12 @@ namespace UniversityRegistrationSystem.Boundry
     class RegisterForClass : ActivityWindow
     {
         AccountController accountControl;
-        ClassController classControl;
-        ClassList classList;
+        RegistrationController registerControl;
 
-        public RegisterForClass(AccountController accountControl, ClassController classControl, ClassList classList) : base(accountControl)
+        public RegisterForClass(AccountController accountControl, RegistrationController registerControl) : base(accountControl)
         {
             this.accountControl = accountControl;
-            this.classControl = classControl;
-            this.classList = classList;
-            this.AddClassList();
-        }
-
-        private void AddClassList()
-        {
-            this.panel3.Controls.Add(this.classList);
-            classList.Show();
+            this.registerControl = registerControl;
         }
     }
 }
