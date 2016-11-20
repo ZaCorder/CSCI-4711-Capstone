@@ -13,7 +13,7 @@ namespace UniversityRegistrationSystem.Boundry
 {
     partial class ActivityWindow : Form
     {
-        AccountController accountController;
+        private AccountController accountController;
 
         public ActivityWindow(AccountController accountController)
         {

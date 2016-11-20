@@ -69,11 +69,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boundry\ClassList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Boundry\CreateClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Boundry\PopUpWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Boundry\PopUpWindow.Designer.cs">
       <DependentUpon>PopUpWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Boundry\TableList.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Control\AccountController.cs" />
     <Compile Include="Control\ClassController.cs" />
