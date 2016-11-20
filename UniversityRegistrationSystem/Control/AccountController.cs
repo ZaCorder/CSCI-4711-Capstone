@@ -16,6 +16,20 @@ namespace UniversityRegistrationSystem.Control
     {
         private Account account;
         private DBConnect db;
+        private LoginForm loginForm;
+
+        public LoginForm LoginForm
+        {
+            get
+            {
+                return loginForm;
+            }
+
+            set
+            {
+                loginForm = value;
+            }
+        }
 
         public AccountController(DBConnect db) : base(db)
         {
@@ -63,16 +77,11 @@ namespace UniversityRegistrationSystem.Control
         /// </summary>
         public void DisplayLoginForm(bool displayError = false, string username = "" )
         {
-            LoginForm loginForm = new LoginForm(this);
             if (displayError)
-            {
-                loginForm.InvalidLogin(username);
-            }
+                this.LoginForm.InvalidLogin(username);
             else
-            {
-                loginForm._ErrorLbl.Visible = false;
-            }
-            loginForm.Show();
+                LoginForm._ErrorLbl.Visible = false;
+            this.LoginForm.Reset().Show();
         }
 
         /// <summary>

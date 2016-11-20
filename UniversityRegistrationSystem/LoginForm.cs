@@ -37,7 +37,7 @@ namespace UniversityRegistrationSystem
             {
 
                 if (Controller.Login(username, password))
-                    this.Close();
+                    this.Hide();
                 else
                     this.InvalidLogin(username);
             }
@@ -56,6 +56,15 @@ namespace UniversityRegistrationSystem
             this.ErrorLbl.Text = "You must enter a valid username and password";
             this.ErrorLbl.Visible = true;
             this.ErrorLbl.ForeColor = Color.Red;
+        }
+
+        public LoginForm Reset()
+        {
+            this.Emailtbx.Text = "";
+            this.Passwordtbx.Text = "";
+            this.ErrorLbl.Text = "";
+            this.ErrorLbl.Visible = false;
+            return this;
         }
 
       

@@ -20,6 +20,12 @@ namespace UniversityRegistrationSystem.Boundry
             this.accountController = accountController;
             InitializeComponent();
             this.AddLogoutButton();
+            this.FormClosing += this.AccountController_Closing;
+        }
+
+        private void AccountController_Closing(object sender, FormClosingEventArgs e)
+        {
+            accountController.Logout();
         }
 
         private void AddLogoutButton()

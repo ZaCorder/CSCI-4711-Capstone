@@ -20,13 +20,11 @@ namespace UniversityRegistrationSystem
             DBConnect db = DBConnect.Instance;
             new DBConnectorInit(db);
             AccountController accountControl = new AccountController(db);
-            
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            LoginForm loginForm = new LoginForm(accountControl);
-            loginForm.Show();
-            Application.Run();
+            accountControl.LoginForm = new LoginForm(accountControl);
+            Application.Run(accountControl.LoginForm);
         }
     }
 }
