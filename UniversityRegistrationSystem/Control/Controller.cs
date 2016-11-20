@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace UniversityRegistrationSystem.Control
 {
-    class Controller
+    public class Controller
     {
         private DBConnect db;
 

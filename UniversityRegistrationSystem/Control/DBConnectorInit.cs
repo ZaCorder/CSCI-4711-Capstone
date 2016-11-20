@@ -141,13 +141,13 @@ namespace UniversityRegistrationSystem.Control
         {
             AdministratorAccount administrator = new AdministratorAccount();
             administrator.Email = "administrator@example.com";
-            administrator.Password = "donotenter";
+            administrator.Password = "donotenter".GetHashCode().ToString();
             administrator.Type = "Administrator";
             dbConnector.SaveAccount(administrator);
 
             StudentAccount student = new StudentAccount();
             student.Email = "student@example.com";
-            student.Password = "donotenter";
+            student.Password = "donotenter".GetHashCode().ToString();
             student.Type = "Student";
             student.Classes = dbConnector.GetClasses();
             dbConnector.SaveAccount(student);
