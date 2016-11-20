@@ -7,7 +7,7 @@ using System.Data.Common;
 
 namespace UniversityRegistrationSystem.Entity
 {
-    class StudentAccount : Account
+    public class StudentAccount : Account
     {
         private List<Class> classes;
 

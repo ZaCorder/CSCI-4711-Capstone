@@ -23,10 +23,8 @@ namespace UniversityRegistrationSystem
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            accountControl.Login("administrator@example.com", "donotenter");
-
-            Application.Run();
+            accountControl.LoginForm = new LoginForm(accountControl);
+            Application.Run(accountControl.LoginForm);
         }
     }
 }
