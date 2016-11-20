@@ -12,13 +12,23 @@ namespace UniversityRegistrationSystem.Boundry
         AccountController accountControl;
         ClassController classControl;
         ClassList classList;
+        CreateClassForm createClassForm;
 
-        public CreateClass(AccountController accountControl, ClassController classControl, ClassList classList) : base(accountControl)
+        public CreateClass(AccountController accountControl, ClassController classControl, ClassList classList, CreateClassForm createClassForm) : base(accountControl)
         {
+            this.createClassForm = createClassForm;
             this.accountControl = accountControl;
             this.classControl = classControl;
             this.classList = classList;
             this.AddClassList();
+
+            this.AddCreateClassForm();
+        }
+
+        private void AddCreateClassForm()
+        {
+            this.panel2.Controls.Add(this.createClassForm);
+            this.createClassForm.Show();
         }
 
         private void AddClassList()

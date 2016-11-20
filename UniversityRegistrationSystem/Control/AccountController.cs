@@ -52,6 +52,9 @@ namespace UniversityRegistrationSystem.Control
         /// <param name="password">The password of the user to be logged in.</param>
         public bool Login(string username, string password)
         {
+            //TODO: delete before committing
+            username = "administrator@example.com";
+            password = "donotenter";
             string hashedPassword = password.GetHashCode().ToString();
             this.account = db.GetAccount(username, hashedPassword);
             if (account.Type == null)
@@ -77,10 +80,6 @@ namespace UniversityRegistrationSystem.Control
         /// </summary>
         public void DisplayLoginForm(bool displayError = false, string username = "" )
         {
-            if (displayError)
-                this.LoginForm.InvalidLogin(username);
-            else
-                LoginForm._ErrorLbl.Visible = false;
             this.LoginForm.Reset().Show();
         }
 
@@ -91,8 +90,8 @@ namespace UniversityRegistrationSystem.Control
         public void ShowActivityWorkspace(string type)
         {
             ClassList classList = new ClassList(db.GetClasses());
-            CreateClass activityWindow = new CreateClass(this, new ClassController(this.db), classList);
-
+            CreateClassForm createClassForm = new CreateClassForm();
+            CreateClass activityWindow = new CreateClass(this, new ClassController(this.db), classList,createClassForm);
             activityWindow.Text = "Create class Activity Window";
             activityWindow.Show();
         }

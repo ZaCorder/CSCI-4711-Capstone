@@ -69,11 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Boundry\CreateClassWindow.cs">
+    <Compile Include="Boundry\CreateClassForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Boundry\CreateClassWindow.Designer.cs">
-      <DependentUpon>CreateClassWindow.cs</DependentUpon>
+    <Compile Include="Boundry\CreateClassForm.Designer.cs">
+      <DependentUpon>CreateClassForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Boundry\ClassList.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -119,8 +120,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Boundry\CreateClassWindow.resx">
-      <DependentUpon>CreateClassWindow.cs</DependentUpon>
+    <EmbeddedResource Include="Boundry\CreateClassForm.resx">
+      <DependentUpon>CreateClassForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Boundry\PopUpWindow.resx">
       <DependentUpon>PopUpWindow.cs</DependentUpon>
