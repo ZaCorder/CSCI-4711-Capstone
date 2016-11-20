@@ -38,7 +38,6 @@ namespace UniversityRegistrationSystem.Boundry
         private void logoutButton_Click(object sender, EventArgs e)
         {
             this.Close();
-            this.accountController.Logout();
         }
     }
 }
