@@ -47,7 +47,7 @@ namespace UniversityRegistrationSystem.Boundry
                 string fullClassId = String.Format("{0}-{1}", c.CourseNo, c.Section);
                 this.table.Rows.Add(fullClassId, c.ClassName, c.Credits,
                     c.StartDate.ToString("MMM dd, yyyy"),
-                    c.EndDate.ToString("MM dd, yyy"),
+                    c.EndDate.ToString("MMM dd, yyy"),
                     c.ClassDays,
                     c.TimeStart.ToString("HH:mm") + "-" + c.TimeEnd.ToString("HH:mm"),
                     c.Location, c.Instructor);
