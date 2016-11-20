@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UniversityRegistrationSystem.Control;
 
-namespace UniversityRegistrationSystem
+namespace UniversityRegistrationSystem.Boundry
 {
     public partial class LoginForm : Form
     {

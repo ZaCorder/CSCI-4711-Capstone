@@ -1,4 +1,4 @@
-﻿namespace UniversityRegistrationSystem
+﻿namespace UniversityRegistrationSystem.Boundry
 {
     partial class LoginForm
     {
