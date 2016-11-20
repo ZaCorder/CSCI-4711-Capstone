@@ -35,7 +35,7 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(673, 12);
+            this.panel1.Location = new System.Drawing.Point(840, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(83, 35);
             this.panel1.TabIndex = 0;
@@ -44,14 +44,14 @@
             // 
             this.panel2.Location = new System.Drawing.Point(-1, 53);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(757, 220);
+            this.panel2.Size = new System.Drawing.Size(937, 220);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.Location = new System.Drawing.Point(-1, 279);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(757, 258);
+            this.panel3.Size = new System.Drawing.Size(937, 258);
             this.panel3.TabIndex = 2;
             // 
             // ActivityWindow
@@ -59,7 +59,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(754, 536);
+            this.ClientSize = new System.Drawing.Size(935, 536);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -72,8 +72,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
+        protected System.Windows.Forms.Panel panel1;
+        protected System.Windows.Forms.Panel panel2;
+        protected System.Windows.Forms.Panel panel3;
     }
 }
