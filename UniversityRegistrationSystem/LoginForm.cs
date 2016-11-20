@@ -26,48 +26,36 @@ namespace UniversityRegistrationSystem
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void Loginbtn_Click(object sender, EventArgs e)
         {
             string username = Emailtbx.Text;
             string password = Passwordtbx.Text;
+
             if (String.IsNullOrWhiteSpace(username) || String.IsNullOrWhiteSpace(password))
-            {
-                DisplayError();
-            }
+                this.DisplayError();
             else
             {
-                this.Close();
-                if(!Controller.Login(username, password))
-                {
-                    //previously entered username not persisting in textbox form
-                    this.Emailtbx.Text = username;
-                }
+
+                if (Controller.Login(username, password))
+                    this.Close();
+                else
+                    this.InvalidLogin(username);
             }
             
         }
 
         public void InvalidLogin(string username)
         {
-            InitializeComponent();
-            DisplayError();
-            Emailtbx.Text = username;
-
+            this.DisplayError();
+            this.Emailtbx.Text = username;
+            this.Passwordtbx.Text = "";
         }
 
         private void DisplayError()
         {
-            ErrorLbl.Text = "You must enter a valid username and password";
-            ErrorLbl.Visible = true;
+            this.ErrorLbl.Text = "You must enter a valid username and password";
+            this.ErrorLbl.Visible = true;
+            this.ErrorLbl.ForeColor = Color.Red;
         }
 
       

@@ -40,61 +40,67 @@
             // 
             // Emailtbx
             // 
-            this.Emailtbx.Location = new System.Drawing.Point(114, 120);
+            this.Emailtbx.Location = new System.Drawing.Point(86, 98);
+            this.Emailtbx.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Emailtbx.Name = "Emailtbx";
-            this.Emailtbx.Size = new System.Drawing.Size(273, 22);
+            this.Emailtbx.Size = new System.Drawing.Size(206, 20);
             this.Emailtbx.TabIndex = 0;
-            this.Emailtbx.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Passwordtbx
             // 
-            this.Passwordtbx.Location = new System.Drawing.Point(114, 173);
+            this.Passwordtbx.Location = new System.Drawing.Point(86, 141);
+            this.Passwordtbx.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Passwordtbx.Name = "Passwordtbx";
             this.Passwordtbx.PasswordChar = '*';
-            this.Passwordtbx.Size = new System.Drawing.Size(273, 22);
+            this.Passwordtbx.Size = new System.Drawing.Size(206, 20);
             this.Passwordtbx.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(62, 120);
+            this.label1.Location = new System.Drawing.Point(46, 98);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Email:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 173);
+            this.label2.Location = new System.Drawing.Point(26, 141);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 17);
+            this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Password:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(35, 9);
+            this.label3.Location = new System.Drawing.Point(26, 7);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(302, 17);
+            this.label3.Size = new System.Drawing.Size(227, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Welcome to the University Registration System";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 50);
+            this.label4.Location = new System.Drawing.Point(9, 41);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(375, 17);
+            this.label4.Size = new System.Drawing.Size(278, 13);
             this.label4.TabIndex = 5;
             this.label4.Text = "Please enter your Email address and Password to login in.";
             // 
             // Loginbtn
             // 
-            this.Loginbtn.Location = new System.Drawing.Point(177, 208);
+            this.Loginbtn.Location = new System.Drawing.Point(133, 169);
+            this.Loginbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Loginbtn.Name = "Loginbtn";
-            this.Loginbtn.Size = new System.Drawing.Size(76, 33);
+            this.Loginbtn.Size = new System.Drawing.Size(57, 27);
             this.Loginbtn.TabIndex = 6;
             this.Loginbtn.Text = "Login";
             this.Loginbtn.UseVisualStyleBackColor = true;
@@ -104,17 +110,18 @@
             // 
             this.ErrorLbl.AutoSize = true;
             this.ErrorLbl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ErrorLbl.Location = new System.Drawing.Point(62, 86);
+            this.ErrorLbl.Location = new System.Drawing.Point(46, 70);
+            this.ErrorLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ErrorLbl.Name = "ErrorLbl";
-            this.ErrorLbl.Size = new System.Drawing.Size(0, 17);
+            this.ErrorLbl.Size = new System.Drawing.Size(0, 13);
             this.ErrorLbl.TabIndex = 7;
             this.ErrorLbl.Visible = false;
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(404, 253);
+            this.ClientSize = new System.Drawing.Size(303, 206);
             this.Controls.Add(this.ErrorLbl);
             this.Controls.Add(this.Loginbtn);
             this.Controls.Add(this.label4);
@@ -123,9 +130,13 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Passwordtbx);
             this.Controls.Add(this.Emailtbx);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "LoginForm";
+            this.ShowIcon = false;
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

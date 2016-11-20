@@ -41,12 +41,7 @@ namespace UniversityRegistrationSystem.Control
             string hashedPassword = password.GetHashCode().ToString();
             this.account = db.GetAccount(username, hashedPassword);
             if (account.Type == null)
-            {
-                //invalid login - display error message
-                DisplayLoginForm(true, username);
                 return false;
-
-            }
             else
             {
                 this.ShowActivityWorkspace(account.Type);
