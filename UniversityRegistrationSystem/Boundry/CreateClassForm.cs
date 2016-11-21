@@ -38,6 +38,11 @@ namespace UniversityRegistrationSystem.Boundry
 
         private void Clearbtn_Click(object sender, EventArgs e)
         {
+            ClearForm();
+        }
+
+        public void ClearForm()
+        {
             CourseNotbx.ResetText();
             sectionList.SelectedIndex = -1;
             classNametbx.ResetText();
@@ -48,21 +53,38 @@ namespace UniversityRegistrationSystem.Boundry
             EndTime.ResetText();
             StartDate.ResetText();
             EndDate.ResetText();
-            DayOfClass.SelectedIndex = -1;
-            
+            ClassDays.SelectedIndex = -1;
+
         }
 
         private void Submitbtn_Click(object sender, EventArgs e)
         {
-            CreateClassEventArgs createClassEventArgs = new CreateClassEventArgs(CourseNotbx.Text, sectionList.Text,
-                classNametbx.Text, Convert.ToInt32(creditsList.Text), locationList.Text, instructorList.Text, StartTime.Value, EndTime.Value, StartDate.Value,
-                EndDate.Value, DayOfClass.Text);
-            this.createClassListener.Invoke(sender, createClassEventArgs);
+            bool isValidStrings = true;
+            bool isValidDates = true;
+            if(String.IsNullOrWhiteSpace(CourseNotbx.Text)||String.IsNullOrWhiteSpace(sectionList.Text) || String.IsNullOrWhiteSpace(classNametbx.Text) ||
+                String.IsNullOrWhiteSpace(creditsList.Text) || String.IsNullOrWhiteSpace(locationList.Text) || String.IsNullOrWhiteSpace(instructorList.Text) || 
+                String.IsNullOrWhiteSpace(ClassDays.Text))
+            {
+                PopUpWindow.Display("All class attributes must have a value.");
+                isValidStrings = false;
+            }
+            
+
+            if(StartDate.Value <= DateTime.Now || EndDate.Value < DateTime.Now || StartTime.Value <= DateTime.Now || EndDate.Value < DateTime.Now ||
+                StartDate.Value > EndDate.Value || StartTime.Value > EndTime.Value)
+            {
+                PopUpWindow.Display("Error in the dates chosen");
+                isValidDates = false;
+            }
+
+            if (isValidStrings && isValidDates)
+            {
+                CreateClassEventArgs createClassEventArgs = new CreateClassEventArgs(CourseNotbx.Text, sectionList.Text,
+                    classNametbx.Text, Convert.ToInt32(creditsList.Text), locationList.Text, instructorList.Text, StartTime.Value, EndTime.Value, StartDate.Value,
+                    EndDate.Value, ClassDays.Text);
+                this.createClassListener.Invoke(sender, createClassEventArgs);
+            }
         }
 
-        public Label GetErrorLabel()
-        {
-            return Errorlbl;
-        }
     }
 }

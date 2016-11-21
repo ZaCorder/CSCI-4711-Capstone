@@ -44,26 +44,18 @@ namespace UniversityRegistrationSystem.Control
         {
             if(db.DoesClassExist(e.CourseNum, e.Section))
             {
-                DisplayError("A class with course number: " + e.CourseNum + " and section: " + e.Section + " already exists.");
+                PopUpWindow.Display("A class with course number: " + e.CourseNum + " and section: " + e.Section + " already exists.");
             }
             else
             {
-                //turn error message off
-                Label error = this.createClassForm.GetErrorLabel();
-                error.Visible = false;
-
+                
                 //save to database and update classList
                 db.CreateClass(e.CourseNum, e.Section, e.ClassName, e.Credits, e.Location, e.Instructor,e.StartTime, e.EndTime, e.StartDate, e.EndDate, e.ClassDays);
                 classList.Update(db.GetClasses());
+                createClassForm.ClearForm();
+                PopUpWindow.Display("Class: " + e.CourseNum + ", section: " + e.Section + ", added!");
             }
         }
-
-        private void DisplayError(string message)
-        {
-            Label error = this.createClassForm.GetErrorLabel();
-            error.Text = message;
-            error.Visible = true;
-            error.ForeColor = Color.Red;
-        }
+        
     }
 }

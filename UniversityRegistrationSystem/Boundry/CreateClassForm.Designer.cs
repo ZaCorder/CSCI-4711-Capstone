@@ -50,10 +50,9 @@
             this.EndDate = new System.Windows.Forms.DateTimePicker();
             this.EndTime = new System.Windows.Forms.DateTimePicker();
             this.StartTime = new System.Windows.Forms.DateTimePicker();
-            this.DayOfClass = new System.Windows.Forms.ComboBox();
+            this.ClassDays = new System.Windows.Forms.ComboBox();
             this.Clearbtn = new System.Windows.Forms.Button();
             this.Submitbtn = new System.Windows.Forms.Button();
-            this.Errorlbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // CreateClasslbl
@@ -272,17 +271,17 @@
             this.StartTime.Size = new System.Drawing.Size(200, 22);
             this.StartTime.TabIndex = 24;
             // 
-            // DayOfClass
+            // ClassDays
             // 
-            this.DayOfClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.DayOfClass.FormattingEnabled = true;
-            this.DayOfClass.Items.AddRange(new object[] {
+            this.ClassDays.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ClassDays.FormattingEnabled = true;
+            this.ClassDays.Items.AddRange(new object[] {
             "M/W/F",
             "T/Tr"});
-            this.DayOfClass.Location = new System.Drawing.Point(517, 190);
-            this.DayOfClass.Name = "DayOfClass";
-            this.DayOfClass.Size = new System.Drawing.Size(121, 24);
-            this.DayOfClass.TabIndex = 25;
+            this.ClassDays.Location = new System.Drawing.Point(517, 190);
+            this.ClassDays.Name = "ClassDays";
+            this.ClassDays.Size = new System.Drawing.Size(121, 24);
+            this.ClassDays.TabIndex = 25;
             // 
             // Clearbtn
             // 
@@ -304,15 +303,6 @@
             this.Submitbtn.UseVisualStyleBackColor = true;
             this.Submitbtn.Click += new System.EventHandler(this.Submitbtn_Click);
             // 
-            // Errorlbl
-            // 
-            this.Errorlbl.AutoSize = true;
-            this.Errorlbl.Location = new System.Drawing.Point(446, 231);
-            this.Errorlbl.Name = "Errorlbl";
-            this.Errorlbl.Size = new System.Drawing.Size(0, 17);
-            this.Errorlbl.TabIndex = 28;
-            this.Errorlbl.Visible = false;
-            // 
             // CreateClassForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -320,10 +310,9 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(934, 283);
-            this.Controls.Add(this.Errorlbl);
             this.Controls.Add(this.Submitbtn);
             this.Controls.Add(this.Clearbtn);
-            this.Controls.Add(this.DayOfClass);
+            this.Controls.Add(this.ClassDays);
             this.Controls.Add(this.StartTime);
             this.Controls.Add(this.EndTime);
             this.Controls.Add(this.EndDate);
@@ -380,9 +369,8 @@
         private System.Windows.Forms.DateTimePicker EndDate;
         private System.Windows.Forms.DateTimePicker EndTime;
         private System.Windows.Forms.DateTimePicker StartTime;
-        private System.Windows.Forms.ComboBox DayOfClass;
+        private System.Windows.Forms.ComboBox ClassDays;
         private System.Windows.Forms.Button Clearbtn;
         private System.Windows.Forms.Button Submitbtn;
-        private System.Windows.Forms.Label Errorlbl;
     }
 }
