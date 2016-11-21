@@ -14,9 +14,10 @@ namespace UniversityRegistrationSystem.Boundry
 {
     public partial class RegisterForClassForm : Form
     {
-        
+        private DBConnect db;
         private List<Class> classes;
         private EventHandler registerForClassListener;
+        AccountController accountControl;
         public RegisterForClassForm(List<Class> classes)
         {
             this.classes = classes;
@@ -34,7 +35,7 @@ namespace UniversityRegistrationSystem.Boundry
 
         private void OnClick(object sender, EventArgs e)
         {
-           
+            //db.Register(comboBox1.Text, Account student);//Unsure with how to pass student info here.
         }
 
     }
