@@ -31,5 +31,13 @@ namespace UniversityRegistrationSystem.Entity
         public StudentAccount(DbDataReader reader) : base(reader)
         {
         }
+        public bool IsRegistered(StudentAccount student, Class classRecord)
+        {
+            bool isRegistered = false;
+            foreach (Class registeredClass in student.Classes)
+                if (registeredClass.CourseNo.Equals(classRecord.CourseNo) && registeredClass.Section.Equals(classRecord.Section))
+                    isRegistered = true;
+            return isRegistered;
+        }
     }
 }

@@ -41,20 +41,10 @@ namespace UniversityRegistrationSystem.Boundry
             student = (StudentAccount)this.accountControl.GetLoggedInUser();
             foreach (Class classRecord in this.classes)
             {
-                reg = false;
-                foreach (Class registeredClass in student.Classes)
-                {
-                    if (!registeredClass.Equals(classRecord))
-                        reg = true;
-                        
-                }
-                if(!reg)
-                {
+                if (!student.IsRegistered(student, classRecord))
                     this.comboBox1.Items.Add(classRecord);
-                }
-                
-            }    
-                
+            }
+
         }
 
         public void Update(List<Class> classes)
