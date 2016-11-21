@@ -35,10 +35,19 @@ namespace UniversityRegistrationSystem.Boundry
 
         private void PopulateComboBox1()
         {
-            // Need to filter classes based on classes already registered.
-            // this.accountControl.GetLoggedInUser().
+            
+            StudentAccount student = new StudentAccount();
+            student = (StudentAccount) this.accountControl.GetLoggedInUser();
             foreach (Class classRecord in this.classes)
-                this.comboBox1.Items.Add(classRecord);
+            {
+                foreach(Class registeredClass in student.Classes)
+                {
+                    if (!registeredClass.Equals(classRecord))
+                        this.comboBox1.Items.Add(classRecord);
+                }
+                
+            }    
+                
         }
 
         public void Update(List<Class> classes)
