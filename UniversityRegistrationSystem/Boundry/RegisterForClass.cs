@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UniversityRegistrationSystem.Control;
+using UniversityRegistrationSystem.Boundry;
 
 namespace UniversityRegistrationSystem.Boundry
 {
@@ -12,12 +13,17 @@ namespace UniversityRegistrationSystem.Boundry
         AccountController accountControl;
         RegistrationController registerControl;
         RegisterForClassForm registerForm;
+        ClassList classList;
 
-        public RegisterForClass(AccountController accountControl, RegistrationController registerControl, RegisterForClassForm registerForm) : base(accountControl)
+        public RegisterForClass(AccountController accountControl, RegistrationController registerControl, RegisterForClassForm registerForm, ClassList classList) : base(accountControl)
         {
             this.accountControl = accountControl;
             this.registerControl = registerControl;
             this.registerForm = registerForm;
+            this.classList = classList;
+
+            this.AddClassList();
+           
             this.AddRegisterForClassForm();
 
         }
@@ -26,6 +32,12 @@ namespace UniversityRegistrationSystem.Boundry
         {
             this.panel2.Controls.Add(this.registerForm);
             this.registerForm.Show();
+        }
+
+        private void AddClassList()
+        {
+            this.panel3.Controls.Add(this.classList);
+            classList.Show();
         }
     }
 }

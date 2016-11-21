@@ -12,6 +12,7 @@ namespace UniversityRegistrationSystem.Control
     {
         private DBConnect db;
         private AccountController accountController;
+        ClassList classList;
 
         public RegistrationController(DBConnect db, AccountController accountController) : base(db)
         {
@@ -26,8 +27,9 @@ namespace UniversityRegistrationSystem.Control
 
         public void ShowActivityWorkspace()
         {
+            classList = new ClassList(db.GetClasses());
             RegisterForClassForm registerForm = new RegisterForClassForm(this.accountController, this, db.GetClasses());
-            RegisterForClass activityWindow = new RegisterForClass(this.accountController, this, registerForm);
+            RegisterForClass activityWindow = new RegisterForClass(this.accountController, this, registerForm, classList);
             activityWindow.Text = "Register for class";
             activityWindow.Show();
         }
