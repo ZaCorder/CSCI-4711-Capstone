@@ -12,14 +12,14 @@ namespace UniversityRegistrationSystem.Boundry
 {
     public partial class CreateClassForm : Form
     {
-        private EventHandler createClassListener;
+        private EventHandler<CreateClassEventArgs> createClassListener;
         public CreateClassForm()
         {
             this.SetTopLevel(false);
             InitializeComponent();
         }
 
-        public CreateClassForm(EventHandler createClassListener)
+        public CreateClassForm(EventHandler<CreateClassEventArgs> createClassListener)
         {
             this.createClassListener = createClassListener;
             this.SetTopLevel(false);
@@ -49,14 +49,20 @@ namespace UniversityRegistrationSystem.Boundry
             StartDate.ResetText();
             EndDate.ResetText();
             DayOfClass.SelectedIndex = -1;
+            
         }
 
         private void Submitbtn_Click(object sender, EventArgs e)
         {
             CreateClassEventArgs createClassEventArgs = new CreateClassEventArgs(CourseNotbx.Text, sectionList.Text,
-                classNametbx.Text, creditsList.Text, locationList.Text, instructorList.Text, StartTime.Value, EndTime.Value, StartDate.Value,
+                classNametbx.Text, Convert.ToInt32(creditsList.Text), locationList.Text, instructorList.Text, StartTime.Value, EndTime.Value, StartDate.Value,
                 EndDate.Value, DayOfClass.Text);
             this.createClassListener.Invoke(sender, createClassEventArgs);
+        }
+
+        public Label GetErrorLabel()
+        {
+            return Errorlbl;
         }
     }
 }

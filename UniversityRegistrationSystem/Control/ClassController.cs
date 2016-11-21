@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using UniversityRegistrationSystem.Boundry;
 
 namespace UniversityRegistrationSystem.Control
@@ -11,6 +13,8 @@ namespace UniversityRegistrationSystem.Control
     {
         private DBConnect db;
         private AccountController accountController;
+        private CreateClassForm createClassForm;
+        ClassList classList;
 
         public ClassController(DBConnect db, AccountController accountController) : base(db)
         {
@@ -29,18 +33,37 @@ namespace UniversityRegistrationSystem.Control
 
         public void ShowCreateClass()
         {
-            ClassList classList = new ClassList(db.GetClasses());
-            CreateClassForm createClassForm = new CreateClassForm(new EventHandler(this.Submit));
+            classList = new ClassList(db.GetClasses());
+            createClassForm = new CreateClassForm(new EventHandler<CreateClassEventArgs>(this.Submit));
             CreateClass activityWindow = new CreateClass(this.accountController, this, classList, createClassForm);
             activityWindow.Text = "Create class Activity Window";
             activityWindow.Show();
         }
 
-        private void Submit(object sender, EventArgs e)
+        private void Submit(object sender, CreateClassEventArgs e)
         {
+            if(db.DoesClassExist(e.CourseNum, e.Section))
+            {
+                DisplayError("A class with course number: " + e.CourseNum + " and section: " + e.Section + " already exists.");
+            }
+            else
+            {
+                //turn error message off
+                Label error = this.createClassForm.GetErrorLabel();
+                error.Visible = false;
 
-            PopUpWindow.Display("adfasfd", "Title");
-            Console.WriteLine();
+                //save to database and update classList
+                db.CreateClass(e.CourseNum, e.Section, e.ClassName, e.Credits, e.Location, e.Instructor,e.StartTime, e.EndTime, e.StartDate, e.EndDate, e.ClassDays);
+                classList.Update(db.GetClasses());
+            }
+        }
+
+        private void DisplayError(string message)
+        {
+            Label error = this.createClassForm.GetErrorLabel();
+            error.Text = message;
+            error.Visible = true;
+            error.ForeColor = Color.Red;
         }
     }
 }

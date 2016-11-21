@@ -53,6 +53,7 @@
             this.DayOfClass = new System.Windows.Forms.ComboBox();
             this.Clearbtn = new System.Windows.Forms.Button();
             this.Submitbtn = new System.Windows.Forms.Button();
+            this.Errorlbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // CreateClasslbl
@@ -303,13 +304,23 @@
             this.Submitbtn.UseVisualStyleBackColor = true;
             this.Submitbtn.Click += new System.EventHandler(this.Submitbtn_Click);
             // 
+            // Errorlbl
+            // 
+            this.Errorlbl.AutoSize = true;
+            this.Errorlbl.Location = new System.Drawing.Point(446, 231);
+            this.Errorlbl.Name = "Errorlbl";
+            this.Errorlbl.Size = new System.Drawing.Size(0, 17);
+            this.Errorlbl.TabIndex = 28;
+            this.Errorlbl.Visible = false;
+            // 
             // CreateClassForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(934, 269);
+            this.ClientSize = new System.Drawing.Size(934, 283);
+            this.Controls.Add(this.Errorlbl);
             this.Controls.Add(this.Submitbtn);
             this.Controls.Add(this.Clearbtn);
             this.Controls.Add(this.DayOfClass);
@@ -372,5 +383,6 @@
         private System.Windows.Forms.ComboBox DayOfClass;
         private System.Windows.Forms.Button Clearbtn;
         private System.Windows.Forms.Button Submitbtn;
+        private System.Windows.Forms.Label Errorlbl;
     }
 }

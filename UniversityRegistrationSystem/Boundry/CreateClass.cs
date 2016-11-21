@@ -38,23 +38,152 @@ namespace UniversityRegistrationSystem.Boundry
         }
     }
 
-    class CreateClassEventArgs : EventArgs
+    public class CreateClassEventArgs : EventArgs
     {
-        private string CourseNum { get; set; }
-        private string section { get; set; }
-        private string className { get; set; }
-        private string credits { get; set; }
-        private string location { get; set; }
-        private string instructor { get; set; }
-        private DateTime StartTime { get; set; }
-        private DateTime EndTime { get; set; }
-        private DateTime StartDate { get; set; }
-        private DateTime EndDate { get; set; }
-        private string DayOfClass { get; set; }
+        private string courseNum;
+        private string section;
+        private string className;
+        private int credits;
+        private string location;
+        private string instructor;
+        private DateTime startTime;
+        private DateTime endTime;
+        private DateTime startDate;
+        private DateTime endDate;
+        private string classDays;
 
-        public CreateClassEventArgs(string CourseNum, string section, string className, string credits, 
+        public string CourseNum{ 
+            get{
+                return courseNum;
+            }
+             set
+            {
+                courseNum = value;
+            }
+        }
+        
+        public string Section  
+        {
+            get
+            {
+                return section;
+            }
+            set
+            {
+                section = value;
+            }
+        }
+        
+        public string ClassName
+        {
+            get
+            {
+                return className;
+            }
+            set
+            {
+                className = value;
+            }
+        }
+        public int Credits
+        {
+            get
+            {
+                return credits;
+            }
+            set
+            {
+                credits = value;
+            }
+        }
+
+        public string Location
+        {
+            get
+            {
+                return location;
+            }
+            set
+            {
+                location = value;
+            }
+        }
+
+        public string Instructor
+        {
+            get
+            {
+                return instructor;
+            }
+            set
+            {
+                instructor = value;
+            }
+        }
+
+        public DateTime StartTime
+        {
+            get
+            {
+                return startTime;
+            }
+            set
+            {
+                startTime = value;
+            }
+        }
+
+        public DateTime EndTime
+        {
+            get
+            {
+                return endTime;
+            }
+            set
+            {
+                endTime = value;
+            }
+        }
+
+        public DateTime StartDate
+        {
+            get
+            {
+                return startDate;
+            }
+            set
+            {
+                startDate = value;
+            }
+        }
+
+        public DateTime EndDate
+        {
+            get
+            {
+                return endDate;
+            }
+            set
+            {
+                endDate = value;
+            }
+        }
+
+        public string ClassDays
+        {
+            get
+            {
+                return classDays;
+            }
+            set
+            {
+                classDays = value;
+            }
+        }
+
+        public CreateClassEventArgs(string CourseNum, string section, string className, int credits, 
             string location, string instructor, DateTime StartTime, DateTime EndTime, DateTime StartDate, 
-            DateTime EndDate, string DayOfClass)
+            DateTime EndDate, string classDays)
         {
             this.CourseNum = CourseNum;
             this.section = section;
@@ -66,7 +195,7 @@ namespace UniversityRegistrationSystem.Boundry
             this.EndTime = EndTime;
             this.StartDate = StartDate;
             this.EndDate = EndDate;
-            this.DayOfClass = DayOfClass;
+            this.ClassDays = classDays;
         }
     }
 }
