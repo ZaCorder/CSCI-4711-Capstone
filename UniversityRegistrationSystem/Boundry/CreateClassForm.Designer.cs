@@ -279,7 +279,7 @@
             this.ClassDays.FormattingEnabled = true;
             this.ClassDays.Items.AddRange(new object[] {
             "MWF",
-            "TTr"});
+            "TR"});
             this.ClassDays.Location = new System.Drawing.Point(517, 190);
             this.ClassDays.Name = "ClassDays";
             this.ClassDays.Size = new System.Drawing.Size(121, 24);
