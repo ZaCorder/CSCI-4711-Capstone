@@ -37,7 +37,6 @@ namespace UniversityRegistrationSystem.Boundry
 
         private void PopulateComboBox1()
         {
-            bool reg;
             student = (StudentAccount)this.accountControl.GetLoggedInUser();
             foreach (Class classRecord in this.classes)
             {
@@ -49,24 +48,14 @@ namespace UniversityRegistrationSystem.Boundry
 
         public void Update(List<Class> classes)
         {
-            bool reg = false;
             student = (StudentAccount)this.accountControl.GetLoggedInUser();
             this.classes = classes;
             // Update form.
             for(int i = 0; i < classes.Count; i++)
             {
-                Console.WriteLine(classes[i].ClassName);
                 if(comboBox1.Text.StartsWith(classes[i].CourseNo))
                 {
-                    foreach(Class c in student.Classes)
-                    {
-                        if(classes[i].CourseNo.Equals(c.CourseNo) && classes[i].Section.Equals(c.Section))
-                        {
-                            reg = true;
-                            break;
-                        }
-                    }
-                    if(!reg)
+                    if(!student.IsRegistered(student, classes[i]))
                     {
                         classes.Remove(classes[i]);
                         this.comboBox1.Items.Clear();
@@ -88,8 +77,9 @@ namespace UniversityRegistrationSystem.Boundry
 
         private void OnClick(object sender, EventArgs e)
         {
-            this.registrationControl.Submit(comboBox1.Text, (StudentAccount) this.accountControl.GetLoggedInUser());
+            string fullCourseNo = comboBox1.Text;
             this.Update(this.classes);
+            this.registrationControl.Submit(fullCourseNo, (StudentAccount) this.accountControl.GetLoggedInUser());
             // Will need to update form.
         }
 
