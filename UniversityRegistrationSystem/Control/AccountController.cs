@@ -90,7 +90,7 @@ namespace UniversityRegistrationSystem.Control
         /// <param name="type"></param>
         public void ShowActivityWorkspace(string type)
         {
-            RegisterForClassForm registerForm = new RegisterForClassForm();
+            RegisterForClassForm registerForm = new RegisterForClassForm(db.GetClasses());
             RegisterForClass activityWindow = new RegisterForClass(this, new RegistrationController(this.db, this), registerForm);
             activityWindow.Text = "Register for class Activity Window";
             activityWindow.Show();
