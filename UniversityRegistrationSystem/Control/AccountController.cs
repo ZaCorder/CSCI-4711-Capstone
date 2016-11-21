@@ -89,11 +89,8 @@ namespace UniversityRegistrationSystem.Control
         /// <param name="type"></param>
         public void ShowActivityWorkspace(string type)
         {
-            ClassList classList = new ClassList(db.GetClasses());
-            CreateClassForm createClassForm = new CreateClassForm();
-            CreateClass activityWindow = new CreateClass(this, new ClassController(this.db), classList,createClassForm);
-            activityWindow.Text = "Create class Activity Window";
-            activityWindow.Show();
+            ClassController createClass = new ClassController(this.db, this);
+            createClass.ShowCreateClass();
         }
     }
 }

@@ -35,12 +35,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.CourseNotbx = new System.Windows.Forms.TextBox();
+            this.sectionList = new System.Windows.Forms.ComboBox();
+            this.creditsList = new System.Windows.Forms.ComboBox();
+            this.classNametbx = new System.Windows.Forms.TextBox();
+            this.locationList = new System.Windows.Forms.ComboBox();
+            this.instructorList = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -119,17 +119,18 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "Section:";
             // 
-            // textBox1
+            // CourseNotbx
             // 
-            this.textBox1.Location = new System.Drawing.Point(132, 76);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(120, 22);
-            this.textBox1.TabIndex = 7;
+            this.CourseNotbx.Location = new System.Drawing.Point(132, 76);
+            this.CourseNotbx.Name = "CourseNotbx";
+            this.CourseNotbx.Size = new System.Drawing.Size(120, 22);
+            this.CourseNotbx.TabIndex = 7;
             // 
-            // comboBox1
+            // sectionList
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.sectionList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.sectionList.FormattingEnabled = true;
+            this.sectionList.Items.AddRange(new object[] {
             "A",
             "B",
             "C",
@@ -138,60 +139,60 @@
             "F",
             "G",
             "H"});
-            this.comboBox1.Location = new System.Drawing.Point(132, 104);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 9;
+            this.sectionList.Location = new System.Drawing.Point(132, 104);
+            this.sectionList.Name = "sectionList";
+            this.sectionList.Size = new System.Drawing.Size(121, 24);
+            this.sectionList.TabIndex = 9;
             // 
-            // comboBox2
+            // creditsList
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.creditsList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.creditsList.FormattingEnabled = true;
+            this.creditsList.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
             "4",
             "5"});
-            this.comboBox2.Location = new System.Drawing.Point(131, 162);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 24);
-            this.comboBox2.TabIndex = 10;
+            this.creditsList.Location = new System.Drawing.Point(131, 162);
+            this.creditsList.Name = "creditsList";
+            this.creditsList.Size = new System.Drawing.Size(121, 24);
+            this.creditsList.TabIndex = 10;
             // 
-            // textBox2
+            // classNametbx
             // 
-            this.textBox2.Location = new System.Drawing.Point(132, 134);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 22);
-            this.textBox2.TabIndex = 11;
+            this.classNametbx.Location = new System.Drawing.Point(132, 134);
+            this.classNametbx.Name = "classNametbx";
+            this.classNametbx.Size = new System.Drawing.Size(121, 22);
+            this.classNametbx.TabIndex = 11;
             // 
-            // comboBox3
+            // locationList
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.locationList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.locationList.FormattingEnabled = true;
+            this.locationList.Items.AddRange(new object[] {
             "Allgood Hall",
             "University Hall",
             "Science Building"});
-            this.comboBox3.Location = new System.Drawing.Point(132, 192);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 24);
-            this.comboBox3.TabIndex = 12;
+            this.locationList.Location = new System.Drawing.Point(132, 192);
+            this.locationList.Name = "locationList";
+            this.locationList.Size = new System.Drawing.Size(121, 24);
+            this.locationList.TabIndex = 12;
             // 
-            // comboBox4
+            // instructorList
             // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
+            this.instructorList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.instructorList.FormattingEnabled = true;
+            this.instructorList.Items.AddRange(new object[] {
             "Mike Dowell",
             "Onyeka Ezenwoye",
             "Harley Eades",
             "Paul York",
             "Todd Schultz"});
-            this.comboBox4.Location = new System.Drawing.Point(131, 222);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 24);
-            this.comboBox4.TabIndex = 13;
+            this.instructorList.Location = new System.Drawing.Point(131, 222);
+            this.instructorList.Name = "instructorList";
+            this.instructorList.Size = new System.Drawing.Size(121, 24);
+            this.instructorList.TabIndex = 13;
             // 
             // label6
             // 
@@ -300,6 +301,7 @@
             this.Submitbtn.TabIndex = 27;
             this.Submitbtn.Text = "Submit";
             this.Submitbtn.UseVisualStyleBackColor = true;
+            this.Submitbtn.Click += new System.EventHandler(this.Submitbtn_Click);
             // 
             // CreateClassForm
             // 
@@ -320,12 +322,12 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.comboBox4);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.instructorList);
+            this.Controls.Add(this.locationList);
+            this.Controls.Add(this.classNametbx);
+            this.Controls.Add(this.creditsList);
+            this.Controls.Add(this.sectionList);
+            this.Controls.Add(this.CourseNotbx);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -352,12 +354,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.TextBox CourseNotbx;
+        private System.Windows.Forms.ComboBox sectionList;
+        private System.Windows.Forms.ComboBox creditsList;
+        private System.Windows.Forms.TextBox classNametbx;
+        private System.Windows.Forms.ComboBox locationList;
+        private System.Windows.Forms.ComboBox instructorList;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;

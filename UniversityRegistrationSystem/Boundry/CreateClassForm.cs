@@ -38,7 +38,25 @@ namespace UniversityRegistrationSystem.Boundry
 
         private void Clearbtn_Click(object sender, EventArgs e)
         {
+            CourseNotbx.ResetText();
+            sectionList.SelectedIndex = -1;
+            classNametbx.ResetText();
+            creditsList.SelectedIndex = -1;
+            locationList.SelectedIndex = -1;
+            instructorList.SelectedIndex = -1;
+            StartTime.ResetText();
+            EndTime.ResetText();
+            StartDate.ResetText();
+            EndDate.ResetText();
+            DayOfClass.SelectedIndex = -1;
+        }
 
+        private void Submitbtn_Click(object sender, EventArgs e)
+        {
+            CreateClassEventArgs createClassEventArgs = new CreateClassEventArgs(CourseNotbx.Text, sectionList.Text,
+                classNametbx.Text, creditsList.Text, locationList.Text, instructorList.Text, StartTime.Value, EndTime.Value, StartDate.Value,
+                EndDate.Value, DayOfClass.Text);
+            this.createClassListener.Invoke(sender, createClassEventArgs);
         }
     }
 }

@@ -37,4 +37,36 @@ namespace UniversityRegistrationSystem.Boundry
             classList.Show();
         }
     }
+
+    class CreateClassEventArgs : EventArgs
+    {
+        private string CourseNum { get; set; }
+        private string section { get; set; }
+        private string className { get; set; }
+        private string credits { get; set; }
+        private string location { get; set; }
+        private string instructor { get; set; }
+        private DateTime StartTime { get; set; }
+        private DateTime EndTime { get; set; }
+        private DateTime StartDate { get; set; }
+        private DateTime EndDate { get; set; }
+        private string DayOfClass { get; set; }
+
+        public CreateClassEventArgs(string CourseNum, string section, string className, string credits, 
+            string location, string instructor, DateTime StartTime, DateTime EndTime, DateTime StartDate, 
+            DateTime EndDate, string DayOfClass)
+        {
+            this.CourseNum = CourseNum;
+            this.section = section;
+            this.className = className;
+            this.credits = credits;
+            this.location = location;
+            this.instructor = instructor;
+            this.StartTime = StartTime;
+            this.EndTime = EndTime;
+            this.StartDate = StartDate;
+            this.EndDate = EndDate;
+            this.DayOfClass = DayOfClass;
+        }
+    }
 }
