@@ -68,12 +68,19 @@ namespace UniversityRegistrationSystem.Boundry
                 PopUpWindow.Display("All class attributes must have a value.");
                 isValidStrings = false;
             }
-            
 
-            if(StartDate.Value <= DateTime.Now || EndDate.Value < DateTime.Now || StartTime.Value <= DateTime.Now || EndDate.Value < DateTime.Now ||
-                StartDate.Value > EndDate.Value || StartTime.Value > EndTime.Value)
+            if (StartDate.Value <= DateTime.Now || StartDate.Value > EndDate.Value)
             {
-                PopUpWindow.Display("Error in the dates chosen");
+                PopUpWindow.Display("Invalid start date. Please choose a start date after today and before the end date.");
+                isValidDates = false;
+            }
+            else if (EndDate.Value <= DateTime.Now || EndDate.Value < StartDate.Value)
+            {
+                PopUpWindow.Display("Invalid end date. Please choose an end date after today and after the start date.");
+                isValidDates = false;
+            }
+            else if (StartTime.Value > EndTime.Value) {
+                PopUpWindow.Display("Invalid time. End time must be after the start time.");
                 isValidDates = false;
             }
 
