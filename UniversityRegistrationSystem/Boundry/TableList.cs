@@ -22,6 +22,7 @@ namespace UniversityRegistrationSystem.Boundry
             this.table = new DataTable();
             this.AutoSize = true;
             this.BuildColumns();
+            this.Dock = DockStyle.Fill;
             this.LoadData();
         }
 

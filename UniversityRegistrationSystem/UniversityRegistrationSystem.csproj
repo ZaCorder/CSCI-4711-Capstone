@@ -81,6 +81,9 @@
     <Compile Include="Boundry\RegisterForClass.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Boundry\ClassWorksheet.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Boundry\CreateClass.cs">
       <SubType>Form</SubType>
     </Compile>
