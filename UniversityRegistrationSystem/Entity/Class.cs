@@ -181,5 +181,10 @@ namespace UniversityRegistrationSystem.Entity
             this.EndDate = reader.GetDateTime(9);
             this.ClassDays = reader.GetString(10);
         }
+
+        public override string ToString()
+        {
+            return this.CourseNo + "-" + this.section;
+        }
     }
 }

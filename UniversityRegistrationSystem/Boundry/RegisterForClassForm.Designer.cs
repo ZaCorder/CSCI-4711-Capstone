@@ -51,12 +51,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 2;
-            
-           /* for(int i = 0; i < classes.Count; i++)//This for loop is commented out so that we can view the form
-            {
-                this.comboBox1.Items.AddRange(new object[]{classes[i].CourseNo + "-" + classes[i].Section});
-            }*/
-            
             // 
             // button1
             // 

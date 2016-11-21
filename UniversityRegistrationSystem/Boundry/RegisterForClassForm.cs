@@ -12,30 +12,37 @@ using UniversityRegistrationSystem.Control;
 
 namespace UniversityRegistrationSystem.Boundry
 {
-    public partial class RegisterForClassForm : Form
+    partial class RegisterForClassForm : Form
     {
-        private DBConnect db;
+        private AccountController accountControl;
+        private RegistrationController registrationControl;
         private List<Class> classes;
-        private EventHandler registerForClassListener;
-        AccountController accountControl;
-        public RegisterForClassForm(List<Class> classes)
+
+        public RegisterForClassForm(AccountController accountControl, RegistrationController registrationControl, List<Class> classes)
         {
-            this.classes = classes;
             this.SetTopLevel(false);
+            this.registrationControl = registrationControl;
+            this.accountControl = accountControl;
+            this.classes = classes;
+
+            if (!(accountControl.GetLoggedInUser() is StudentAccount))
+                throw new Exception("Only student accounts can be used for registering classes.");
+
+
             InitializeComponent();
+            this.PopulateComboBox1();
         }
 
-        public RegisterForClassForm(EventHandler registerForClassListener)
+        private void PopulateComboBox1()
         {
-            
-            this.registerForClassListener = registerForClassListener;
-            this.SetTopLevel(false);
-            InitializeComponent();  
+            foreach (Class classRecord in this.classes)
+                this.comboBox1.Items.Add(classRecord);
         }
 
         private void OnClick(object sender, EventArgs e)
         {
-            //db.Register(comboBox1.Text, Account student);//Unsure with how to pass student info here.
+            this.registrationControl.Submit(comboBox1.Text, (StudentAccount) this.accountControl.GetLoggedInUser());
+            // Will need to update form.
         }
 
     }
