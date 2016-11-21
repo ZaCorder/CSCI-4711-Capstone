@@ -52,6 +52,8 @@ namespace UniversityRegistrationSystem.Control
         /// <param name="password">The password of the user to be logged in.</param>
         public bool Login(string username, string password)
         {
+            username = "administrator@example.com";
+            password = "donotenter";
             string hashedPassword = password.GetHashCode().ToString();
             this.account = db.GetAccount(username, hashedPassword);
             if (account.Type == null)

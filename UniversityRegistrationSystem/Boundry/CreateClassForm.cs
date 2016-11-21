@@ -13,6 +13,7 @@ namespace UniversityRegistrationSystem.Boundry
     public partial class CreateClassForm : Form
     {
         private EventHandler<CreateClassEventArgs> createClassListener;
+        private CreateClassEventArgs createClassEventArgs;
         public CreateClassForm()
         {
             this.SetTopLevel(false);
@@ -61,36 +62,42 @@ namespace UniversityRegistrationSystem.Boundry
         {
             bool isValidStrings = true;
             bool isValidDates = true;
+            List<string> errors = new List<string>();
             if(String.IsNullOrWhiteSpace(CourseNotbx.Text)||String.IsNullOrWhiteSpace(sectionList.Text) || String.IsNullOrWhiteSpace(classNametbx.Text) ||
                 String.IsNullOrWhiteSpace(creditsList.Text) || String.IsNullOrWhiteSpace(locationList.Text) || String.IsNullOrWhiteSpace(instructorList.Text) || 
                 String.IsNullOrWhiteSpace(ClassDays.Text))
             {
-                PopUpWindow.Display("All class attributes must have a value.");
+                errors.Add("All class attributes must have a value.");
                 isValidStrings = false;
             }
 
             if (StartDate.Value <= DateTime.Now || StartDate.Value > EndDate.Value)
             {
-                PopUpWindow.Display("Invalid start date. Please choose a start date after today and before the end date.");
+                errors.Add("Invalid start date. Please choose a start date after today and before the end date.");
                 isValidDates = false;
             }
             else if (EndDate.Value <= DateTime.Now || EndDate.Value < StartDate.Value)
             {
-                PopUpWindow.Display("Invalid end date. Please choose an end date after today and after the start date.");
+                errors.Add("Invalid end date. Please choose an end date after today and after the start date.");
                 isValidDates = false;
             }
             else if (StartTime.Value > EndTime.Value) {
-                PopUpWindow.Display("Invalid time. End time must be after the start time.");
+                errors.Add("Invalid time. End time must be after the start time.");
                 isValidDates = false;
             }
 
             if (isValidStrings && isValidDates)
             {
-                CreateClassEventArgs createClassEventArgs = new CreateClassEventArgs(CourseNotbx.Text, sectionList.Text,
+                createClassEventArgs = new CreateClassEventArgs(CourseNotbx.Text, sectionList.Text,
                     classNametbx.Text, Convert.ToInt32(creditsList.Text), locationList.Text, instructorList.Text, StartTime.Value, EndTime.Value, StartDate.Value,
                     EndDate.Value, ClassDays.Text);
-                this.createClassListener.Invoke(sender, createClassEventArgs);
             }
+            else
+            {
+                createClassEventArgs = new CreateClassEventArgs(errors);
+            }
+
+            this.createClassListener.Invoke(sender, createClassEventArgs);
         }
 
     }

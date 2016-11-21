@@ -51,6 +51,7 @@ namespace UniversityRegistrationSystem.Boundry
         private DateTime startDate;
         private DateTime endDate;
         private string classDays;
+        private List<string> errors = new List<string>();
 
         public string CourseNum{ 
             get{
@@ -181,6 +182,18 @@ namespace UniversityRegistrationSystem.Boundry
             }
         }
 
+        public List<string> Errors
+        {
+            get
+            {
+                return errors;
+            }
+            set
+            {
+                errors = value;
+            }
+        }
+
         public CreateClassEventArgs(string CourseNum, string section, string className, int credits, 
             string location, string instructor, DateTime StartTime, DateTime EndTime, DateTime StartDate, 
             DateTime EndDate, string classDays)
@@ -196,6 +209,11 @@ namespace UniversityRegistrationSystem.Boundry
             this.StartDate = StartDate;
             this.EndDate = EndDate;
             this.ClassDays = classDays;
+        }
+
+        public CreateClassEventArgs(List<string> errors)
+        {
+            this.errors = errors;
         }
     }
 }

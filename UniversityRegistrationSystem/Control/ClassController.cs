@@ -42,20 +42,19 @@ namespace UniversityRegistrationSystem.Control
 
         private void Submit(object sender, CreateClassEventArgs e)
         {
-            if(db.DoesClassExist(e.CourseNum, e.Section))
-            {
+            if (e.Errors.Count != 0)
+                PopUpWindow.Display(e.Errors[0]);
+            else if (db.DoesClassExist(e.CourseNum, e.Section))
                 PopUpWindow.Display("A class with course number: " + e.CourseNum + " and section: " + e.Section + " already exists.");
-            }
             else
             {
-                
                 //save to database and update classList
-                db.CreateClass(e.CourseNum, e.Section, e.ClassName, e.Credits, e.Location, e.Instructor,e.StartTime, e.EndTime, e.StartDate, e.EndDate, e.ClassDays);
+                db.CreateClass(e.CourseNum, e.Section, e.ClassName, e.Credits, e.Location, e.Instructor, e.StartTime, e.EndTime, e.StartDate, e.EndDate, e.ClassDays);
                 classList.Update(db.GetClasses());
                 createClassForm.ClearForm();
                 PopUpWindow.Display("Class: " + e.CourseNum + ", section: " + e.Section + ", added!");
             }
+
         }
-        
     }
 }
