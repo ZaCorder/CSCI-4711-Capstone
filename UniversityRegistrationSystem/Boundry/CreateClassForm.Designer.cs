@@ -260,6 +260,7 @@
             this.EndTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.EndTime.Location = new System.Drawing.Point(517, 106);
             this.EndTime.Name = "EndTime";
+            this.EndTime.ShowUpDown = true;
             this.EndTime.Size = new System.Drawing.Size(200, 22);
             this.EndTime.TabIndex = 23;
             // 
@@ -268,6 +269,7 @@
             this.StartTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.StartTime.Location = new System.Drawing.Point(517, 76);
             this.StartTime.Name = "StartTime";
+            this.StartTime.ShowUpDown = true;
             this.StartTime.Size = new System.Drawing.Size(200, 22);
             this.StartTime.TabIndex = 24;
             // 
@@ -276,8 +278,8 @@
             this.ClassDays.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ClassDays.FormattingEnabled = true;
             this.ClassDays.Items.AddRange(new object[] {
-            "M/W/F",
-            "T/Tr"});
+            "MWF",
+            "TTr"});
             this.ClassDays.Location = new System.Drawing.Point(517, 190);
             this.ClassDays.Name = "ClassDays";
             this.ClassDays.Size = new System.Drawing.Size(121, 24);
