@@ -37,11 +37,12 @@ namespace UniversityRegistrationSystem.Boundry
 
         private void PopulateComboBox1()
         {
-            bool reg = false;
+            bool reg;
             student = (StudentAccount)this.accountControl.GetLoggedInUser();
             foreach (Class classRecord in this.classes)
             {
-                foreach(Class registeredClass in student.Classes)
+                reg = false;
+                foreach (Class registeredClass in student.Classes)
                 {
                     if (!registeredClass.Equals(classRecord))
                         reg = true;
