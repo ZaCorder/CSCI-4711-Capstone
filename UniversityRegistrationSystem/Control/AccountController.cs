@@ -77,10 +77,6 @@ namespace UniversityRegistrationSystem.Control
         /// </summary>
         public void DisplayLoginForm(bool displayError = false, string username = "" )
         {
-            if (displayError)
-                this.LoginForm.InvalidLogin(username);
-            else
-                LoginForm._ErrorLbl.Visible = false;
             this.LoginForm.Reset().Show();
         }
 
@@ -90,11 +86,8 @@ namespace UniversityRegistrationSystem.Control
         /// <param name="type"></param>
         public void ShowActivityWorkspace(string type)
         {
-            ClassList classList = new ClassList(db.GetClasses());
-            CreateClass activityWindow = new CreateClass(this, new ClassController(this.db), classList);
-
-            activityWindow.Text = "Create class Activity Window";
-            activityWindow.Show();
+            ClassController createClass = new ClassController(this.db, this);
+            createClass.ShowCreateClass();
         }
     }
 }
