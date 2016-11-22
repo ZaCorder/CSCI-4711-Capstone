@@ -23,9 +23,8 @@ namespace UniversityRegistrationSystem.Boundry
 
         public void Update(List<Class> classes)
         {
-            this.table.Clear();
             this.classes = classes;
-            this.LoadData();
+            this.Update();
         }
         
         protected override void BuildColumns()
