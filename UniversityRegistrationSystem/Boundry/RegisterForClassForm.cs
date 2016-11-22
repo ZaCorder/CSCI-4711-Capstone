@@ -17,8 +17,6 @@ namespace UniversityRegistrationSystem.Boundry
         private AccountController accountControl;
         private RegistrationController registrationControl;
         private List<Class> classes;
-        StudentAccount student = new StudentAccount();
-        
 
         public RegisterForClassForm(AccountController accountControl, RegistrationController registrationControl, List<Class> classes)
         {
@@ -30,57 +28,29 @@ namespace UniversityRegistrationSystem.Boundry
             if (!(accountControl.GetLoggedInUser() is StudentAccount))
                 throw new Exception("Only student accounts can be used for registering classes.");
 
-
             InitializeComponent();
-            this.PopulateComboBox1();
+            this.PopulateComboBox1((StudentAccount) accountControl.GetLoggedInUser());
         }
 
-        private void PopulateComboBox1()
+        private void PopulateComboBox1(StudentAccount student)
         {
-            student = (StudentAccount)this.accountControl.GetLoggedInUser();
             foreach (Class classRecord in this.classes)
             {
-                if (!student.IsRegistered(student, classRecord))
+                if (!student.IsRegistered(classRecord))
                     this.comboBox1.Items.Add(classRecord);
             }
-
         }
 
-        public void Update(List<Class> classes)
+        public void UpdateForm(StudentAccount student)
         {
-            student = (StudentAccount)this.accountControl.GetLoggedInUser();
-            this.classes = classes;
-            // Update form.
-            for(int i = 0; i < classes.Count; i++)
-            {
-                if(comboBox1.Text.StartsWith(classes[i].CourseNo))
-                {
-                    if(!student.IsRegistered(student, classes[i]))
-                    {
-                        classes.Remove(classes[i]);
-                        this.comboBox1.Items.Clear();
-                        PopulateComboBox1();
-                        classes.Add(classes[i]);
-                    }
-                    else
-                    {
-                        PopUpWindow.Display("Already Registered. No changes have been made to your account.");
-                    }
-                    break;
-                }
-                
-            }
-
-        
-            // Update table (different ticket).
+            this.comboBox1.Items.Clear();
+            this.PopulateComboBox1(student);
         }
 
         private void OnClick(object sender, EventArgs e)
         {
             string fullCourseNo = comboBox1.Text;
-            this.Update(this.classes);
             this.registrationControl.Submit(fullCourseNo, (StudentAccount) this.accountControl.GetLoggedInUser());
-            // Will need to update form.
         }
 
     }
