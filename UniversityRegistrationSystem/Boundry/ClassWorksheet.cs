@@ -10,23 +10,23 @@ using UniversityRegistrationSystem.Entity;
 
 namespace UniversityRegistrationSystem.Boundry
 {
-    class ClassList : TableList
+    class ClassWorksheet : TableList
     {
-        
-        private List<Class> classes;
 
-        public ClassList(List<Class> classes)
+        private StudentAccount student;
+
+        public ClassWorksheet(StudentAccount student)
         {
-            this.classes = classes;
+            this.student = student;
             this.InitalizeTable();
         }
 
-        public void Update(List<Class> classes)
+        public void Update(StudentAccount student)
         {
-            this.classes = classes;
+            this.student = student;
             this.Update();
         }
-        
+
         protected override void BuildColumns()
         {
             this.table.Columns.Add("Course");
@@ -42,7 +42,8 @@ namespace UniversityRegistrationSystem.Boundry
 
         protected override void BuildRows()
         {
-            foreach (Class c in this.classes) {
+            foreach (Class c in this.student.Classes)
+            {
                 string fullClassId = String.Format("{0}-{1}", c.CourseNo, c.Section);
                 this.table.Rows.Add(fullClassId, c.ClassName, c.Credits,
                     c.StartDate.ToString("MMM dd, yyyy"),
@@ -51,7 +52,7 @@ namespace UniversityRegistrationSystem.Boundry
                     c.TimeStart.ToString("HH:mm") + "-" + c.TimeEnd.ToString("HH:mm"),
                     c.Location, c.Instructor);
             }
-            
+
         }
     }
 }

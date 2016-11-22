@@ -13,7 +13,7 @@ namespace UniversityRegistrationSystem.Control
         private DBConnect db;
         private AccountController accountController;
         private RegisterForClassForm registerForm;
-        private ClassList classList;
+        private ClassWorksheet classWorksheet;
 
         public RegistrationController(DBConnect db, AccountController accountController) : base(db)
         {
@@ -31,8 +31,8 @@ namespace UniversityRegistrationSystem.Control
             List<Class> classes = db.GetClasses();
             RegisterForClassForm registerForm = new RegisterForClassForm(this.accountController, this, classes);
             this.registerForm = registerForm;
-            this.classList = new ClassList(classes);
-            RegisterForClass activityWindow = new RegisterForClass(this.accountController, this, registerForm, classList);
+            this.classWorksheet = new ClassWorksheet((StudentAccount) this.accountController.GetLoggedInUser());
+            RegisterForClass activityWindow = new RegisterForClass(this.accountController, this, registerForm, this.classWorksheet);
             activityWindow.Text = "Register for class";
             activityWindow.Show();
         }
@@ -40,12 +40,15 @@ namespace UniversityRegistrationSystem.Control
         public void Submit(string fullClassNo, StudentAccount studentAccount)
         {
             // Check if user is already registered.
-            if (studentAccount.IsRegistered(db.GetClass(fullClassNo)))
+            if (fullClassNo == "")
+                PopUpWindow.Display("Please select a class for which to register.");
+            else if (studentAccount.IsRegistered(db.GetClass(fullClassNo)))
                 PopUpWindow.Display("Already registred for " + fullClassNo + ".");
             else
             {
                 db.Register(fullClassNo, studentAccount);
                 this.registerForm.UpdateForm(studentAccount);
+                this.classWorksheet.Update(studentAccount);
             }
         }
     }

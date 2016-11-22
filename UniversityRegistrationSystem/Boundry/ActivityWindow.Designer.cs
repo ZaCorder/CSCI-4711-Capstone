@@ -31,46 +31,67 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(1120, 15);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(840, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(111, 43);
+            this.panel1.Size = new System.Drawing.Size(83, 35);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(-1, 65);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(-1, 59);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1249, 271);
+            this.panel2.Size = new System.Drawing.Size(937, 167);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
-            this.panel3.Location = new System.Drawing.Point(-1, 343);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Location = new System.Drawing.Point(-1, 258);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1249, 318);
+            this.panel3.Size = new System.Drawing.Size(937, 279);
             this.panel3.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(122, 44);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "label1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 229);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 26);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "label2";
             // 
             // ActivityWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1247, 660);
+            this.ClientSize = new System.Drawing.Size(935, 536);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ActivityWindow";
             this.ShowIcon = false;
             this.Text = "ActivityWindow";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -79,5 +100,7 @@
         protected System.Windows.Forms.Panel panel1;
         protected System.Windows.Forms.Panel panel2;
         protected System.Windows.Forms.Panel panel3;
+        protected System.Windows.Forms.Label label1;
+        protected System.Windows.Forms.Label label2;
     }
 }

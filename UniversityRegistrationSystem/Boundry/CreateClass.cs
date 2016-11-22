@@ -27,12 +27,14 @@ namespace UniversityRegistrationSystem.Boundry
 
         private void AddCreateClassForm()
         {
+            this.label1.Text = "Create a new class";
             this.panel2.Controls.Add(this.createClassForm);
             this.createClassForm.Show();
         }
 
         private void AddClassList()
         {
+            this.label2.Text = "";
             this.panel3.Controls.Add(this.classList);
             classList.Show();
         }

@@ -14,7 +14,6 @@ namespace UniversityRegistrationSystem.Boundry
 
         public TableList()
         {
-            //InitalizeTable();
         }
 
         protected void InitalizeTable()
@@ -22,6 +21,7 @@ namespace UniversityRegistrationSystem.Boundry
             this.table = new DataTable();
             this.AutoSize = true;
             this.BuildColumns();
+            this.Dock = DockStyle.Fill;
             this.LoadData();
         }
 
@@ -31,6 +31,13 @@ namespace UniversityRegistrationSystem.Boundry
             this.DataSource = this.table;
             this.AutoResizeRows();
             this.AutoResizeColumns();
+        }
+
+        public new void Update()
+        {
+            this.table.Rows.Clear();
+            this.BuildRows();
+            this.Parent.Update();
         }
 
         abstract protected void BuildColumns();

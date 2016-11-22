@@ -37,19 +37,19 @@ namespace UniversityRegistrationSystem.Boundry
             foreach (Class classRecord in this.classes)
             {
                 if (!student.IsRegistered(classRecord))
-                    this.comboBox1.Items.Add(classRecord);
+                    this.listBox1.Items.Add(classRecord);
             }
         }
 
         public void UpdateForm(StudentAccount student)
         {
-            this.comboBox1.Items.Clear();
+            this.listBox1.Items.Clear();
             this.PopulateComboBox1(student);
         }
 
         private void OnClick(object sender, EventArgs e)
         {
-            string fullCourseNo = comboBox1.Text;
+            string fullCourseNo = listBox1.Text;
             this.registrationControl.Submit(fullCourseNo, (StudentAccount) this.accountControl.GetLoggedInUser());
         }
 
