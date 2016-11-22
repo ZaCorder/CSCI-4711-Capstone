@@ -40,12 +40,13 @@ namespace UniversityRegistrationSystem.Control
         public void Submit(string fullClassNo, StudentAccount studentAccount)
         {
             // Check if user is already registered.
-            if (studentAccount.IsRegistered(db.GetClass(fullClassNo))) {
+            if (studentAccount.IsRegistered(db.GetClass(fullClassNo)))
                 PopUpWindow.Display("Already registred for " + fullClassNo + ".");
+            else
+            {
                 db.Register(fullClassNo, studentAccount);
+                this.registerForm.UpdateForm(studentAccount);
             }
-            
-            this.registerForm.UpdateForm(studentAccount);
         }
     }
 }
