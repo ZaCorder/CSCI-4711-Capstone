@@ -104,9 +104,11 @@ namespace UniversityRegistrationSystem.Control
                 string query = @"CREATE TABLE AccountClass (
                     email VARCHAR(255),
                     courseNo VARCHAR(64),
+                    section VARCHAR(30),
+                    FOREIGN KEY(courseNo) REFERENCES Class(courseNo),
                     FOREIGN KEY(courseNo) REFERENCES Class(courseNo),
                     FOREIGN KEY(email) REFERENCES Account(email),
-                    PRIMARY KEY (email, courseNo))";
+                    PRIMARY KEY (email, courseNo, section))";
                 SQLiteCommand command = new SQLiteCommand(query, this.dbConnector.GetConnection());
                 command.ExecuteNonQuery();
             }
