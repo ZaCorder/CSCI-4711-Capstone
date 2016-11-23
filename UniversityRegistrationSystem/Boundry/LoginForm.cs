@@ -11,7 +11,7 @@ using UniversityRegistrationSystem.Control;
 
 namespace UniversityRegistrationSystem.Boundry
 {
-    public partial class LoginForm : Form
+    partial class LoginForm : Form
     {
         AccountController Controller;
         public LoginForm(AccountController aController)

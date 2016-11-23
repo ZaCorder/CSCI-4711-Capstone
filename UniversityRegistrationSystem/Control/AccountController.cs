@@ -12,7 +12,7 @@ namespace UniversityRegistrationSystem.Control
     /// <summary>
     /// Account controller class definition.
     /// </summary>
-    public class AccountController : Controller
+    class AccountController : Controller
     {
         private Account account;
         private DBConnect db;
@@ -52,7 +52,7 @@ namespace UniversityRegistrationSystem.Control
         /// <param name="password">The password of the user to be logged in.</param>
         public bool Login(string username, string password)
         {
-            string hashedPassword = password.GetHashCode().ToString();
+            string hashedPassword = HashPassword(password);
             this.account = db.GetAccount(username, hashedPassword);
             if (account.Type == null)
                 return false;
@@ -63,12 +63,18 @@ namespace UniversityRegistrationSystem.Control
             }
         }
 
+        public string HashPassword(string password)
+        {
+            return password.GetHashCode().ToString();
+        }
+
         /// <summary>
         /// Log out the currently logged in user and display the login form.
         /// </summary>
-        public void Logout()
+        public void Logout(ActivityWindow activityWindow)
         {
             this.account = null;
+            activityWindow.Close();
             this.DisplayLoginForm();
         }
 
@@ -89,12 +95,25 @@ namespace UniversityRegistrationSystem.Control
             if (type == "Student")
             {
                 RegistrationController registerController = new RegistrationController(this.db, this);
-                registerController.ShowActivityWorkspace();
+                List<Class> classes = db.GetClasses();
+                RegisterForClassForm registerForm = new RegisterForClassForm(this, registerController, classes);
+                registerController.registerForm = registerForm;
+                ClassWorksheet classWorksheet = new ClassWorksheet((StudentAccount) this.GetLoggedInUser());
+                registerController.classWorksheet = classWorksheet;
+                RegisterForClass activityWindow = new RegisterForClass(this, registerController, registerForm, classWorksheet);
+                activityWindow.Text = "Register for class";
+                activityWindow.Show();
             }
             else if (type == "Administrator")
             {
-                ClassController createClass = new ClassController(this.db, this);
-                createClass.ShowCreateClass();
+                ClassController createClassControl = new ClassController(this.db, this);
+                ClassList classList = new ClassList(db.GetClasses());
+                createClassControl.classList = classList;
+                CreateClassForm createClassForm = new CreateClassForm(createClassControl);
+                createClassControl.createClassForm = createClassForm;
+                CreateClass activityWindow = new CreateClass(this, createClassControl, classList, createClassForm);
+                activityWindow.Text = "Create class Activity Window";
+                activityWindow.Show();
             }
             else {
                 ActivityWindow activityWindow = new ActivityWindow(this);
