@@ -13,8 +13,9 @@ namespace UniversityRegistrationSystem.Control
     {
         private DBConnect db;
         private AccountController accountController;
-        private CreateClassForm createClassForm;
-        ClassList classList;
+        public CreateClassForm createClassForm;
+        public ClassList classList;
+
 
         public ClassController(DBConnect db, AccountController accountController) : base(db)
         {
@@ -26,35 +27,22 @@ namespace UniversityRegistrationSystem.Control
             int credits, string location, string instructor, DateTime timeStart,
             DateTime timeEnd, DateTime startDate, DateTime endDate, string classDays)
         {
-            this.db.CreateClass(courseNo, section, className,
-                credits, location, instructor, timeStart,
-                timeEnd, startDate, endDate, classDays);
-        }
-
-        public void ShowCreateClass()
-        {
-            classList = new ClassList(db.GetClasses());
-            createClassForm = new CreateClassForm(new EventHandler<CreateClassEventArgs>(this.Submit));
-            CreateClass activityWindow = new CreateClass(this.accountController, this, classList, createClassForm);
-            activityWindow.Text = "Create class Activity Window";
-            activityWindow.Show();
-        }
-
-        private void Submit(object sender, CreateClassEventArgs e)
-        {
-            if (e.Errors.Count != 0)
-                PopUpWindow.Display(e.Errors[0]);
-            else if (db.DoesClassExist(e.CourseNum, e.Section))
-                PopUpWindow.Display("A class with course number: " + e.CourseNum + " and section: " + e.Section + " already exists.");
+            if (db.DoesClassExist(courseNo, section))
+                PopUpWindow.Display("A class with course number: " + courseNo + " and section: " + section + " already exists.");
             else
             {
-                //save to database and update classList
-                db.CreateClass(e.CourseNum, e.Section, e.ClassName, e.Credits, e.Location, e.Instructor, e.StartTime, e.EndTime, e.StartDate, e.EndDate, e.ClassDays);
+                this.db.CreateClass(courseNo, section, className,
+                credits, location, instructor, timeStart,
+                timeEnd, startDate, endDate, classDays);
                 classList.Update(db.GetClasses());
                 createClassForm.ClearForm();
-                PopUpWindow.Display("Class: " + e.CourseNum + ", section: " + e.Section + ", added!");
+                PopUpWindow.Display("Class: " + courseNo + ", section: " + section + ", added!");
             }
+        }
 
+        public void Submit(List<string> errors) {
+            foreach (string e in errors)
+                PopUpWindow.Display(e);
         }
     }
 }

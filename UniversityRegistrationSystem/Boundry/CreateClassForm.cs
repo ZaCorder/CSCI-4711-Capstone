@@ -7,22 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UniversityRegistrationSystem.Control;
 
 namespace UniversityRegistrationSystem.Boundry
 {
-    public partial class CreateClassForm : Form
+    partial class CreateClassForm : Form
     {
-        private EventHandler<CreateClassEventArgs> createClassListener;
-        private CreateClassEventArgs createClassEventArgs;
+        private ClassController createClassControl;
+
         public CreateClassForm()
         {
             this.SetTopLevel(false);
             InitializeComponent();
         }
 
-        public CreateClassForm(EventHandler<CreateClassEventArgs> createClassListener)
+        public CreateClassForm(ClassController createClassController)
         {
-            this.createClassListener = createClassListener;
+            this.createClassControl = createClassController;
             this.SetTopLevel(false);
             InitializeComponent();
         }
@@ -87,17 +88,11 @@ namespace UniversityRegistrationSystem.Boundry
             }
 
             if (isValidStrings && isValidDates)
-            {
-                createClassEventArgs = new CreateClassEventArgs(CourseNotbx.Text, sectionList.Text,
+                this.createClassControl.Submit(CourseNotbx.Text, sectionList.Text,
                     classNametbx.Text, Convert.ToInt32(creditsList.Text), locationList.Text, instructorList.Text, StartTime.Value, EndTime.Value, StartDate.Value,
                     EndDate.Value, ClassDays.Text);
-            }
             else
-            {
-                createClassEventArgs = new CreateClassEventArgs(errors);
-            }
-
-            this.createClassListener.Invoke(sender, createClassEventArgs);
+                this.createClassControl.Submit(errors);
         }
 
     }

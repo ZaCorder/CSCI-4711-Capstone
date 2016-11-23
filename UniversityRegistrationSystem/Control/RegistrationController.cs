@@ -12,8 +12,8 @@ namespace UniversityRegistrationSystem.Control
     {
         private DBConnect db;
         private AccountController accountController;
-        private RegisterForClassForm registerForm;
-        private ClassWorksheet classWorksheet;
+        public RegisterForClassForm registerForm;
+        public ClassWorksheet classWorksheet;
 
         public RegistrationController(DBConnect db, AccountController accountController) : base(db)
         {
@@ -24,17 +24,6 @@ namespace UniversityRegistrationSystem.Control
         public StudentAccount Register(string fullCourseId)
         {
             return this.db.Register(fullCourseId, (StudentAccount) this.accountController.GetLoggedInUser());
-        }
-
-        public void ShowActivityWorkspace()
-        {
-            List<Class> classes = db.GetClasses();
-            RegisterForClassForm registerForm = new RegisterForClassForm(this.accountController, this, classes);
-            this.registerForm = registerForm;
-            this.classWorksheet = new ClassWorksheet((StudentAccount) this.accountController.GetLoggedInUser());
-            RegisterForClass activityWindow = new RegisterForClass(this.accountController, this, registerForm, this.classWorksheet);
-            activityWindow.Text = "Register for class";
-            activityWindow.Show();
         }
 
         public void Submit(string fullClassNo, StudentAccount studentAccount)
