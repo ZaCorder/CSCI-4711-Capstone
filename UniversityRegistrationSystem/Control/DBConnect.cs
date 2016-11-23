@@ -123,11 +123,12 @@ namespace UniversityRegistrationSystem.Control
         public void SaveAccountClass(StudentAccount student, Class classRecord)
         {
             this.dbConnection.Open();
-            string query = @"INSERT OR REPLACE INTO AccountClass (email, courseNo)
-                VALUES (@email, @courseNo)";
+            string query = @"INSERT OR REPLACE INTO AccountClass (email, courseNo, section)
+                VALUES (@email, @courseNo, @section)";
             SQLiteCommand command = new SQLiteCommand(query, this.dbConnection);
             command.Parameters.AddWithValue("@email", student.Email);
             command.Parameters.AddWithValue("@courseNo", classRecord.CourseNo);
+            command.Parameters.AddWithValue("@section", classRecord.Section);
             command.ExecuteNonQuery();
             this.dbConnection.Close();
         }
@@ -241,7 +242,7 @@ namespace UniversityRegistrationSystem.Control
                 openedConnection = true;
             }
 
-            string query = @"SELECT c.* FROM AccountClass ac INNER JOIN Class c ON ac.courseNo = c.courseNo WHERE email = @email";
+            string query = @"SELECT c.* FROM AccountClass ac INNER JOIN Class c ON ac.courseNo = c.courseNo AND ac.section = c.section WHERE email = @email";
             SQLiteCommand command = new SQLiteCommand(query, this.dbConnection);
             command.Parameters.AddWithValue("@email", student.Email);
             SQLiteDataReader reader = command.ExecuteReader();
