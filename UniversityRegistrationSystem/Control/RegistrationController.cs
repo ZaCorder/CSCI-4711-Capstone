@@ -21,13 +21,10 @@ namespace UniversityRegistrationSystem.Control
             this.accountController = accountController;
         }
 
-        public StudentAccount Register(string fullCourseId)
+       
+        public void Register(string fullClassNo)
         {
-            return this.db.Register(fullCourseId, (StudentAccount) this.accountController.GetLoggedInUser());
-        }
-
-        public void Submit(string fullClassNo, StudentAccount studentAccount)
-        {
+            StudentAccount studentAccount = (StudentAccount)this.accountController.GetLoggedInUser();
             // Check if user is already registered.
             if (fullClassNo == "")
                 PopUpWindow.Display("Please select a class for which to register.");
@@ -35,7 +32,7 @@ namespace UniversityRegistrationSystem.Control
                 PopUpWindow.Display("Already registred for " + fullClassNo + ".");
             else
             {
-                db.Register(fullClassNo, studentAccount);
+                studentAccount = db.Register(fullClassNo, studentAccount);
                 this.registerForm.UpdateForm(studentAccount);
                 this.classWorksheet.Update(studentAccount);
             }

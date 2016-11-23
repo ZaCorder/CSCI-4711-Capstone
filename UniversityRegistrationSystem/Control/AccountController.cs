@@ -12,7 +12,7 @@ namespace UniversityRegistrationSystem.Control
     /// <summary>
     /// Account controller class definition.
     /// </summary>
-    public class AccountController : Controller
+    class AccountController : Controller
     {
         private Account account;
         private DBConnect db;
@@ -71,9 +71,10 @@ namespace UniversityRegistrationSystem.Control
         /// <summary>
         /// Log out the currently logged in user and display the login form.
         /// </summary>
-        public void Logout()
+        public void Logout(ActivityWindow activityWindow)
         {
             this.account = null;
+            activityWindow.Close();
             this.DisplayLoginForm();
         }
 

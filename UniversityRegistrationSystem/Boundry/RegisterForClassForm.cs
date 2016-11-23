@@ -47,10 +47,10 @@ namespace UniversityRegistrationSystem.Boundry
             this.PopulateComboBox1(student);
         }
 
-        private void OnClick(object sender, EventArgs e)
+        private void Register(object sender, EventArgs e)
         {
             string fullCourseNo = listBox1.Text;
-            this.registrationControl.Submit(fullCourseNo, (StudentAccount) this.accountControl.GetLoggedInUser());
+            this.registrationControl.Register(fullCourseNo);
         }
 
     }
